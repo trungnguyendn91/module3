@@ -1,33 +1,53 @@
+drop database if exists student_manager;
+
 create database student_manager;-- tao database 
 use student_manager;-- chi dinh DB lam viec 
-create table student (-- tao bang 
-id_student int auto_increment,
-name_student varchar(50),
-date_of_birth date,
-primary key (id_student)
+CREATE TABLE student (
+    id_student INT AUTO_INCREMENT,
+    name_student VARCHAR(50),
+    date_of_birth DATE,
+    PRIMARY KEY (id_student)
 );
 -- them thong tin vao bang 
 insert into student(name_student,date_of_birth) value("Trong Nhan", "1994-04-22"),("Van Phu","1992-12-22");
-select*from student;-- xem du lieu 
+SELECT 
+    *
+FROM
+    student;-- xem du lieu 
 alter table student add class text;-- tao cot moi
-set sql_safe_updates= 0; -- cho phep thay doi 
-update student set student.class = "C01" 
-where name_student ="Trong Nhan";
-update student set sutdent.class = "c03"
-where name_student = "Van Phu";
-set sql_safe_updates= 1; -- tat thay doi  
-select*from student;
-create table teacher (
-id_teacher int auto_increment,
-name_teacher varchar(50),
-age int,
-primary key (id_teacher)
+set sql_safe_updates= 0;-- cho phep thay doi 
+UPDATE student 
+SET 
+    student.class = 'C01'
+WHERE
+    name_student = 'Trong Nhan';
+UPDATE student 
+SET 
+    sutdent.class = 'c03'
+WHERE
+    name_student = 'Van Phu';
+set sql_safe_updates= 1;-- tat thay doi  
+SELECT 
+    *
+FROM
+    student;
+CREATE TABLE teacher (
+    id_teacher INT AUTO_INCREMENT,
+    name_teacher VARCHAR(50),
+    age INT,
+    PRIMARY KEY (id_teacher)
 );
 insert into teacher(name_teacher,age) value ("HaiTT", "22"),("ChanhTV", "36");
 alter table teacher add country text;
 
-update teacher set country="Quang Nam"
-where name_teacher = "ChanhTV";
+UPDATE teacher 
+SET 
+    country = 'Quang Nam'
+WHERE
+    name_teacher = 'ChanhTV';
      
-select*from teacher;
+SELECT 
+    *
+FROM
+    teacher;
 drop table teacher;
