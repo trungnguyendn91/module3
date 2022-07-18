@@ -1,27 +1,31 @@
- drop database if exists furama_controller;
+drop database if exists furama_controller;
 
-  create database furama_controller;
- use furama_controller;
+create database furama_controller;
+use furama_controller;
  
-CREATE TABLE vi_tri (
+CREATE TABLE 
+	vi_tri (
     ma_vi_tri INT AUTO_INCREMENT,
     ten_vi_tri VARCHAR(45),
     PRIMARY KEY (ma_vi_tri)
 );
  
-CREATE TABLE trinh_do (
+CREATE TABLE 
+	trinh_do (
     ma_trinh_do INT AUTO_INCREMENT,
     ten_trinh_do VARCHAR(45),
     PRIMARY KEY (ma_trinh_do)
 );
  
-CREATE TABLE bo_phan (
+CREATE TABLE 
+	bo_phan (
     ma_bo_phan INT AUTO_INCREMENT,
     ten_bo_phan VARCHAR(45),
     PRIMARY KEY (ma_bo_phan)
 );
  
-CREATE TABLE nhan_vien (
+CREATE TABLE 
+	nhan_vien (
     ma_nhan_vien INT AUTO_INCREMENT,
     PRIMARY KEY (ma_nhan_vien),
     ho_ten VARCHAR(45),
@@ -36,12 +40,14 @@ CREATE TABLE nhan_vien (
     ma_bo_phan INT
 );
  
-CREATE TABLE loai_khach (
+CREATE TABLE 
+	loai_khach (
     ma_loai_khach_hang INT AUTO_INCREMENT PRIMARY KEY,
     ten_loai_khach_hang VARCHAR(45)
 );
  
-CREATE TABLE khach_hang (
+CREATE TABLE 
+	khach_hang (
     ma_khach_hang INT AUTO_INCREMENT PRIMARY KEY,
     ma_loai_khach_hang INT,
     ho_ten VARCHAR(45),
@@ -53,7 +59,8 @@ CREATE TABLE khach_hang (
     dia_chi VARCHAR(45)
 );
  
-CREATE TABLE hop_dong (
+CREATE TABLE 
+	hop_dong (
     ma_hop_dong INT AUTO_INCREMENT PRIMARY KEY,
     ngay_lam_hop_dong DATETIME,
     ngay_ket_thuc DATETIME,
@@ -63,12 +70,14 @@ CREATE TABLE hop_dong (
     ma_dich_vu INT
 );
  
-CREATE TABLE loai_dich_vu (
+CREATE TABLE 
+	loai_dich_vu (
     ma_loai_dich_vu INT AUTO_INCREMENT PRIMARY KEY,
     ten_loai_dich_vu VARCHAR(45)
 );
  
-CREATE TABLE dich_vu (
+CREATE TABLE 
+	dich_vu (
     ma_dich_vu INT AUTO_INCREMENT PRIMARY KEY,
     ten_dich_vu VARCHAR(45),
     dien_tich INT,
@@ -83,19 +92,22 @@ CREATE TABLE dich_vu (
     dich_vu_mien_phi_di_kem TEXT
 );
 
-CREATE TABLE kieu_thue (
+CREATE TABLE 
+	kieu_thue (
     ma_kieu_thue INT AUTO_INCREMENT PRIMARY KEY,
     ten_kieu_thue VARCHAR(45)
 );
 
-CREATE TABLE hop_dong_chi_tiet (
+CREATE TABLE 
+	hop_dong_chi_tiet (
     ma_hop_dong_chi_tiet INT AUTO_INCREMENT PRIMARY KEY,
     ma_hop_dong INT,
     ma_dich_vu_di_kem INT,
     so_luong INT
 );
 
-CREATE TABLE dich_vu_di_kem (
+CREATE TABLE 
+	dich_vu_di_kem (
     ma_dich_vu_di_kem INT AUTO_INCREMENT PRIMARY KEY,
     ten_dich_vu_di_kem VARCHAR(45),
     gia DOUBLE,
@@ -215,11 +227,6 @@ VALUES
  ("6", "1", "3", "1"),
  ("7", "1", "2", "2"),
  ("8", "12", "2", "2");
--- câu 2 --  
-select * from nhan_vien where (ho_ten regexp "^[hkt]") AND (char_length(ho_ten) <=15);
--- câu 3 --    
-select * from khach_hang where (dia_chi like "%Đà Nẵng" OR dia_chi like "%Quảng Trị") 
-and 
-((timestampdiff(year, ngay_sinh,curdate())>= 18) AND (timestampdiff(year, ngay_sinh,curdate())<= 50));
--- câu 4--  
-select * from khach_hang where (ma_loai_khach_hang = 1)
+
+
+	

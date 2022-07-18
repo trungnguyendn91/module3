@@ -30,3 +30,29 @@ CREATE TABLE order_detail (
     FOREIGN KEY (product_id)
         REFERENCES product (product_id)
 );
+INSERT INTO customer ( customer_name, customer_age) 
+VALUES 
+('Minh Quan', '10'),
+('Ngoc Oanh', '20'),
+('Hong Ha', '50');
+INSERT INTO `order` ( customer_id, order_date) 
+VALUES 
+('1', '2006-03-21'),
+('2', '2006-03-23'),
+('1', '2006-03-13');
+INSERT INTO product ( product_name, product_price) 
+VALUES 
+('May Giat', '3'),
+('Tu Lanh', '5'),
+('Dieu Hoa', '7'),
+('Quat', '1'),
+('Bep Dien', '2');
+INSERT INTO order_detail (order_id, product_id, order_quantity) 
+VALUES 
+('1', '1', '3'),
+('1', '3', '7'),
+('1', '4', '2'),
+('2', '1', '1'),
+('3', '1', '8'),
+('2', '5', '4'),
+('2', '3', '3');
