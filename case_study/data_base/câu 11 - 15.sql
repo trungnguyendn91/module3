@@ -102,13 +102,25 @@ GROUP BY hdct.ma_dich_vu_di_kem  having so_lan_su_dung = 1;
 -- 15.	Hiển thi thông tin của tất cả nhân viên bao gồm ma_nhan_vien, ho_ten, ten_trinh_do, 
 -- ten_bo_phan, so_dien_thoai, dia_chi mới chỉ lập được tối đa 3 hợp đồng từ năm 2020 đến 2021.
 
-select  nv.ma_nhan_vien, nv.ho_ten, td.ten_trinh_do, bp.ten_bo_phan, nv.so_dien_thoai, nv.dia_chi, count(hd.ma_hop_dong) as "so_hop_dong_ky_duoc"
-from
-nhan_vien nv
-left join trinh_do td on nv.ma_trinh_do = td.ma_trinh_do
-left join bo_phan bp on nv.ma_bo_phan = bp.ma_bo_phan
-left join hop_dong hd on nv.ma_nhan_vien = hd.ma_nhan_vien
-where (year(ngay_lam_hop_dong)= 2020  or year(ngay_lam_hop_dong)=2021)
-group by hd.ma_nhan_vien
-having count(hd.ma_hop_dong)<=3; 
+SELECT 
+    nv.ma_nhan_vien,
+    nv.ho_ten,
+    td.ten_trinh_do,
+    bp.ten_bo_phan,
+    nv.so_dien_thoai,
+    nv.dia_chi,
+    COUNT(hd.ma_hop_dong) AS 'so_hop_dong_ky_duoc'
+FROM
+    nhan_vien nv
+        LEFT JOIN
+    trinh_do td ON nv.ma_trinh_do = td.ma_trinh_do
+        LEFT JOIN
+    bo_phan bp ON nv.ma_bo_phan = bp.ma_bo_phan
+        LEFT JOIN
+    hop_dong hd ON nv.ma_nhan_vien = hd.ma_nhan_vien
+WHERE
+    (YEAR(ngay_lam_hop_dong) = 2020
+        OR YEAR(ngay_lam_hop_dong) = 2021)
+GROUP BY hd.ma_nhan_vien
+HAVING COUNT(hd.ma_hop_dong) <= 3; 
 
