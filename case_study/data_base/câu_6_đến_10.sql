@@ -20,8 +20,8 @@ WHERE
         FROM
             hop_dong hd
         WHERE
-            ((hd.ngay_lam_hop_dong BETWEEN '2021-01-01' AND '2021-03-31')
-                OR (hd.ngay_ket_thuc BETWEEN '2021-01-01' AND '2021-03-31')))
+            ((hd.ngay_lam_hop_dong BETWEEN 2021-01-01 AND 2021-03-31)
+                OR (hd.ngay_ket_thuc BETWEEN 2021-01-01 AND 2021-03-31)))
 GROUP BY hd.ma_dich_vu;
 
 -- 7.	Hiển thị thông tin ma_dich_vu, ten_dich_vu, dien_tich, so_nguoi_toi_da, 
@@ -47,15 +47,17 @@ WHERE
         FROM
             hop_dong hd
         WHERE
-            ((hd.ngay_lam_hop_dong BETWEEN '2020-01-01' AND '2020-12-31')
-                OR (hd.ngay_ket_thuc BETWEEN '2020-01-01' AND '2020-12-31')))
-        AND dv.ma_dich_vu NOT IN (SELECT 
+            ((hd.ngay_lam_hop_dong BETWEEN 2020-01-01 AND 2020-12-31)
+                OR (hd.ngay_ket_thuc BETWEEN 2020-01-01 AND 2020-12-31)))
+        AND dv.ma_dich_vu 
+        NOT IN (
+        SELECT 
             hd.ma_dich_vu
         FROM
             hop_dong hd
         WHERE
-            ((hd.ngay_lam_hop_dong BETWEEN '2021-01-01' AND '2021-12-31')
-                OR (hd.ngay_ket_thuc BETWEEN '2021-01-01' AND '2021-12-31')))
+            ((hd.ngay_lam_hop_dong BETWEEN 2021-01-01 AND 2021-12-31)
+                OR (hd.ngay_ket_thuc BETWEEN 2021-01-01 AND 2021-12-31)))
 GROUP BY hd.ma_dich_vu;
 
 -- 8.Hiển thị thông tin ho_ten khách hàng có trong hệ thống, với yêu cầu ho_ten không trùng nhau.
@@ -74,15 +76,15 @@ from khach_hang;
  -- 9.	Thực hiện thống kê doanh thu theo tháng, nghĩa là tương ứng với mỗi tháng trong năm 2021
  -- thì sẽ có bao nhiêu khách hàng thực hiện đặt phòng.
  SELECT 
-    MONTH(hd.ngay_lam_hop_dong) AS 'tháng',
-    COUNT(hd.ma_khach_hang) AS 'số lượng'
+    MONTH(hd.ngay_lam_hop_dong) AS 'thang',
+    COUNT(hd.ma_khach_hang) AS 'so_luong'
 FROM
     khach_hang kh
         JOIN
     hop_dong hd ON kh.ma_khach_hang = hd.ma_khach_hang
 WHERE
     YEAR(hd.ngay_lam_hop_dong)
-        AND YEAR(hd.ngay_ket_thuc) = '2021'
+        AND YEAR(hd.ngay_ket_thuc) = 2021
 GROUP BY MONTH(hd.ngay_lam_hop_dong)
 ORDER BY (hd.ngay_lam_hop_dong);
 
@@ -95,7 +97,7 @@ SELECT
     hd.ngay_lam_hop_dong,
     hd.ngay_ket_thuc,
     hd.tien_dat_coc,
-    SUM(IFNULL(hdct.so_luong, 0)) AS 'số lượng dịch vụ đi kèm'
+    SUM(IFNULL(hdct.so_luong, 0)) AS 'so_luong_dich_vu_di_kem'
 FROM
     hop_dong hd
         LEFT JOIN

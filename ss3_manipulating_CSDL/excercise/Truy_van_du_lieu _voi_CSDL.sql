@@ -13,7 +13,7 @@ SELECT
 FROM
     class
 WHERE
-    MONTH(start_date) = '12';
+    MONTH(start_date) = 12;
 
 -- Hiển thị tất cả các thông tin môn học có credit trong khoảng từ 3-5. 
 SELECT 
@@ -26,7 +26,7 @@ WHERE
 -- Thay đổi mã lớp(ClassID) của sinh viên có tên ‘Hung’ là 2
 UPDATE student 
 SET 
-    student.class_id = '2'
+    student.class_id = 2
 WHERE
     student_name = 'Hung';
 SELECT 
