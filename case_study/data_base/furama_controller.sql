@@ -55,7 +55,7 @@ CREATE TABLE
     gioi_tinh BIT(1),
     so_cmnd VARCHAR(45),
     so_dien_thoai VARCHAR(45),
-    emai VARCHAR(45),
+    email VARCHAR(45),
     dia_chi VARCHAR(45)
 );
  
@@ -163,7 +163,7 @@ value
 ("Gold"),
 ("Silver"),
 ("Member");
-INSERT INTO khach_hang (ma_khach_hang, ma_loai_khach_hang, ho_ten, ngay_sinh, gioi_tinh, so_cmnd, so_dien_thoai, emai, dia_chi) 
+INSERT INTO khach_hang (ma_khach_hang, ma_loai_khach_hang, ho_ten, ngay_sinh, gioi_tinh, so_cmnd, so_dien_thoai, email, dia_chi) 
 values 
  ('1', '5', 'Nguyễn Thị Hào', '1970-11-07', 0, '643431213', '0945423362', 'thihao07@gmail.com', '23 Nguyễn Hoàng, Đà Nẵng'),
  ('2', '3', 'Phạm Xuân Diệu', '1992-08-08', 1, '865342123', '0954333333', 'xuandieu92@gmail.com', 'K77/22 Thái Phiên, Quảng Trị'),
