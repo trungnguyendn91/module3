@@ -1,0 +1,51 @@
+.navbar img {
+    height: 15px;
+    margin-bottom: 5px;
+}
+nav.navbar.navbar-expand-sm.navbar.bg {
+    background-color: #f3f0f0;
+}
+a.nav-link {
+    font-size: 12px;
+}
+form.d-flex {
+    height: 18px;
+    margin-top: 5px;
+}
+input.form-control.me-2 {
+    font-size: 13px;
+}
+.nav-item img{
+    height: 50px;
+    margin-bottom: 10px;
+}
+ul.nav.justify-content-center {
+    margin-top: 40px;
+}
+a.nav-link {
+    font-size: 12px;
+    text-align: center;
+}
+.main-one{
+    margin-top: 40px;
+}
+.well p{
+    font-size: 10px;
+    margin-top: 10px;
+}
+.card-body.text-white {
+    height: 300px;
+    margin-top: 200px;
+}
+h6.text-uppercase.fw-bold {
+    font-size: 12px;
+}
+.mx-auto p{
+    font-size: 12px;
+}
+a.text-white {
+    text-decoration: none;
+}
+.container-fluid.main-two {
+    margin-top: 40px;
+}

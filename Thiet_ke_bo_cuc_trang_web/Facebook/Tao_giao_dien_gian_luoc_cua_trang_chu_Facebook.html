@@ -6,7 +6,30 @@
     <link rel="stylesheet" href="fbcss.css">
     <script src="https://kit.fontawesome.com/d6e19ea644.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="../../My_CSS/My_CSS.css">
+    <style>
+        .sticky ul{
+            /*position: relative;*/
+            /*position: sticky;*/
+            /*position: -webkit-sticky;*/
+            /*left: 0;*/
+            position: fixed;
+            top:70px;
+            width: 250px;
+        }
+        .fix-ads{
+            position: fixed;
+            top:70px;
+            width: 400px;
+            right: 0;
 
+        }
+        .fix-rights ul{
+            position: fixed;
+            top: 250px;
+            right: 0px;
+            width: 300px;
+        }
+    </style>
 </head>
 <body>
 <div class="menu">
@@ -45,8 +68,8 @@
 </div>
 
 <div class="nav-content">
-    <div class="left">
-        <div class="col-l-3">
+    <div class="left " >
+        <div class="col-l-3 sticky">
             <ul>
                 <li><a href=""><img class = "left-avatar" src="https://scontent.fsgn2-2.fna.fbcdn.net/v/t39.30808-6/287825753_5183137478444303_1227555806489450067_n.jpg?_nc_cat=103&ccb=1-7&_nc_sid=09cbfe&_nc_ohc=TpRnrsfIF84AX-FCwX1&_nc_ht=scontent.fsgn2-2.fna&oh=00_AT-QCKUQx6H1OIDizP2Hdnljf7lVlBemoToJsyVm2X7FBg&oe=62E2C18E" alt=""><h5>Nguyễn Thành Trung</h5></a></li>
                 <li><a href=""><img src="https://static.xx.fbcdn.net/rsrc.php/v3/y8/r/S0U5ECzYUSu.png" alt=""><h5>Bạn bè</h5></a></li>
@@ -82,7 +105,7 @@
                 </div>
             </div>
 
-            <div class="content-post">
+            <div class="content-post" >
                 <div class="content-post-top">
                     <a href=""><img  class = "left-avatar" src="https://scontent.fsgn2-2.fna.fbcdn.net/v/t39.30808-6/287825753_5183137478444303_1227555806489450067_n.jpg?_nc_cat=103&ccb=1-7&_nc_sid=09cbfe&_nc_ohc=TpRnrsfIF84AX-FCwX1&_nc_ht=scontent.fsgn2-2.fna&oh=00_AT-QCKUQx6H1OIDizP2Hdnljf7lVlBemoToJsyVm2X7FBg&oe=62E2C18E" alt=""></a>
                     <input type="text" placeholder="Trung ơi, bạn đang nghĩ gì thế ?">
@@ -135,9 +158,9 @@
         </div>
     </div>
 
-    <div class="right">
-        <div class="col-l-3">
-            <div class="right-top">
+    <div class="right" >
+        <div class="col-l-3 fix-ads fix-rights"  >
+            <div class="right-top " >
                 <h3></h3>
                 <div class="ADS">
                     <a href=""><img src="" alt=""/></a>
@@ -145,7 +168,7 @@
                 </div>
             </div>
             <hr>
-            <div class="right-bottom">
+            <div class="right-bottom " >
                 <h3>Người liên hệ</h3>
                 <ul>
                     <li><a href=""><img  class = "right-avatar" src="https://scontent.fsgn2-4.fna.fbcdn.net/v/t1.18169-9/487468_411668832260097_1457004205_n.jpg?stp=c0.23.206.206a_dst-jpg_p206x206&_nc_cat=101&ccb=1-7&_nc_sid=da31f3&_nc_ohc=B5SGQLZiKKcAX_1bOgC&_nc_ht=scontent.fsgn2-4.fna&oh=00_AT-iBr7WyXsBMs0UCuW9J2faJfYTRfjkEkzTq0ksTx-1sA&oe=630375E1" alt="">Kiều Na</a></li>
