@@ -12,9 +12,9 @@
   </head>
   <body>
       <form action="/Discount" method="post">
-        <input type="text" name="productDescription" placeholder="Mo ta san pham">
-        <input type="text" name="price" placeholder="Gia san pham ">
-        <input type="text" name="discountRate" placeholder="chiet khau %">
+        <p>Mô tả sản phẩm</p><input type="text" name="productDescription" placeholder="Mo ta san pham"><br>
+        <p>Giá sản phẩm</p><input type="text" name="price" placeholder="Gia san pham "><br>
+        <p>% chiết khấu</p><input type="text" name="discountRate" placeholder="% chiet khau ">
 
         <button  type="submit">Calculator</button>
       </form>

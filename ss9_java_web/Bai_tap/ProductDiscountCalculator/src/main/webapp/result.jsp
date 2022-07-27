@@ -12,10 +12,10 @@
     <title>Title</title>
 </head>
 <body>
-<h1>Product Description : ${productDescription}</h1>
-<h1>Price : ${price}</h1>
-<h1>Discount Rate : ${discountRate}</h1>
-<h1>Discount Amount : ${discountAmount}</h1>
-<h1>Discount Price : ${discountPrice}</h1>
+<h1>Mô tả sản phẩm: ${productDescription}</h1>
+<h1>Giá : ${price}</h1>
+<h1>% Chiết khấu : ${discountRate}</h1>
+<h1>Số tiền được giảm : ${discountAmount}</h1>
+<h1>Tiền phải trả : ${discountPrice}</h1>
 </body>
 </html>

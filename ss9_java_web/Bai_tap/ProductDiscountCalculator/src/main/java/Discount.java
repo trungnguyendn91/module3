@@ -16,11 +16,11 @@ public class Discount extends HttpServlet {
         double discountPrice = price - discountAmount;
         RequestDispatcher requestDispatcher = request.getRequestDispatcher("result.jsp");
 
-        request.setAttribute("Mo ta san pham",productDescription);
-        request.setAttribute("Gia san pham",price);
-        request.setAttribute("Chiet khau %",discountRate);
-        request.setAttribute("So tien duoc giam",discountAmount);
-        request.setAttribute("Gia sau khi giam",discountPrice);
+        request.setAttribute("productDescription",productDescription);
+        request.setAttribute("price",price);
+        request.setAttribute("discountRate",discountRate);
+        request.setAttribute("discountAmount",discountAmount);
+        request.setAttribute("discountPrice",discountPrice);
 
         requestDispatcher.forward(request, response);
     }
