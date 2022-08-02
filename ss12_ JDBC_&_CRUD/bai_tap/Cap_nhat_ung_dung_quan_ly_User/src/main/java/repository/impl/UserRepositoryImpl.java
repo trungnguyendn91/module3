@@ -42,8 +42,9 @@ public class UserRepositoryImpl implements IUserRepository {
 
     public void insertUser(User user) throws SQLException {
         System.out.println(INSERT_USERS_SQL);
-        // try-with-resource statement will auto close the connection.
-        try (Connection connection = getConnection(); PreparedStatement preparedStatement = connection.prepareStatement(INSERT_USERS_SQL)) {
+        try {
+            Connection connection = getConnection();
+            PreparedStatement preparedStatement = connection.prepareStatement(INSERT_USERS_SQL);
             preparedStatement.setString(1, user.getName());
             preparedStatement.setString(2, user.getEmail());
             preparedStatement.setString(3, user.getCountry());
@@ -56,16 +57,17 @@ public class UserRepositoryImpl implements IUserRepository {
 
     public User selectUser(int id) {
         User user = null;
-        // Step 1: Establishing a Connection
-        try (Connection connection = getConnection();
-             // Step 2:Create a statement using connection object
-             PreparedStatement preparedStatement = connection.prepareStatement(SELECT_USER_BY_ID);) {
+        // Bước 1: Thiết lập kết nối
+        try {
+            Connection connection = getConnection();
+            // Bước 2: Tạo một câu lệnh bằng cách sử dụng đối tượng kết nối
+            PreparedStatement preparedStatement = connection.prepareStatement(SELECT_USER_BY_ID);
             preparedStatement.setInt(1, id);
             System.out.println(preparedStatement);
-            // Step 3: Execute the query or update query
+            // Bước 3: Thực hiện truy vấn hoặc cập nhật truy vấn
             ResultSet rs = preparedStatement.executeQuery();
 
-            // Step 4: Process the ResultSet object.
+            // Bước 4: Xử lý đối tượng ResultSet.
             while (rs.next()) {
                 String name = rs.getString("name");
                 String email = rs.getString("email");
@@ -80,18 +82,17 @@ public class UserRepositoryImpl implements IUserRepository {
 
     public List<User> selectAllUsers() {
 
-        // using try-with-resources to avoid closing resources (boiler plate code)
+        // sử dụng try-with-resources để tránh đóng tài nguyên (mã soạn sẵn)
         List<User> users = new ArrayList<>();
-        // Step 1: Establishing a Connection
-        try (Connection connection = getConnection();
-
-             // Step 2:Create a statement using connection object
-             PreparedStatement preparedStatement = connection.prepareStatement(SELECT_ALL_USERS);) {
+        // Bước 1: Thiết lập kết nối
+        try{ Connection connection = getConnection();
+             // Bước 2: Tạo một câu lệnh bằng cách sử dụng đối tượng kết nối
+             PreparedStatement preparedStatement = connection.prepareStatement(SELECT_ALL_USERS);
             System.out.println(preparedStatement);
-            // Step 3: Execute the query or update query
+            // Bước 3: Thực thi truy vấn hoặc cập nhật truy vấn
             ResultSet rs = preparedStatement.executeQuery();
 
-            // Step 4: Process the ResultSet object.
+            // Bước 4: Xử lý đối tượng ResultSet.
             while (rs.next()) {
                 int id = rs.getInt("id");
                 String name = rs.getString("name");
@@ -106,65 +107,75 @@ public class UserRepositoryImpl implements IUserRepository {
     }
 
     public boolean deleteUser(int id) throws SQLException {
-        boolean rowDeleted;
-        try (Connection connection = getConnection();
-             PreparedStatement statement = connection.prepareStatement(DELETE_USERS_SQL);) {
+        int rowDeleted;
+        try {Connection connection = getConnection();
+             PreparedStatement statement = connection.prepareStatement(DELETE_USERS_SQL);
             statement.setInt(1, id);
-            rowDeleted = statement.executeUpdate() > 0;
+              rowDeleted = statement.executeUpdate() ;
+              return rowDeleted >0? true:false;
+        }catch (SQLException e){
+            e.printStackTrace();
         }
-        return rowDeleted;
+        return false;
     }
 
     public boolean updateUser(User user) throws SQLException {
-        boolean rowUpdated;
-        try (Connection connection = getConnection(); PreparedStatement statement = connection.prepareStatement(UPDATE_USERS_SQL);) {
+        int rowUpdated;
+        try {Connection connection = getConnection();
+             PreparedStatement statement = connection.prepareStatement(UPDATE_USERS_SQL);
             statement.setString(1, user.getName());
             statement.setString(2, user.getEmail());
             statement.setString(3, user.getCountry());
             statement.setInt(4, user.getId());
 
-            rowUpdated = statement.executeUpdate() > 0;
+            rowUpdated = statement.executeUpdate();
+            return rowUpdated > 0?true:false;
+        } catch (SQLException e) {
+            printSQLException(e);
         }
-        return rowUpdated;
+        return false;
     }
 
     @Override
     public List<User> findByCountry(String country) {
         List<User> user = new ArrayList<>();
-        try {Connection connection = getConnection();
+        try {
+            Connection connection = getConnection();
             PreparedStatement preparedStatement = connection.prepareStatement(FIND_BY_COUNTRY);
-            preparedStatement.setString(1,country);
+            preparedStatement.setString(1, country);
             ResultSet resultSet = preparedStatement.executeQuery();
-            while (resultSet.next()){
+            while (resultSet.next()) {
                 int id = resultSet.getInt("id");
                 String name = resultSet.getString("name");
                 String email = resultSet.getString("email");
                 String country1 = resultSet.getString("country");
-                User us = new User(id,name,email,country1);
+                User us = new User(id, name, email, country1);
                 user.add(us);
             }
         } catch (SQLException e) {
             printSQLException(e);
         }
-        return user ;
+        return user;
     }
 
     @Override
     public List<User> allSort() {
         List<User> user = new ArrayList<>();
-        try {Connection connection = getConnection();
+        try {
+            Connection connection = getConnection();
             PreparedStatement preparedStatement = connection.prepareStatement(SELECT_ALL_Sort);
             ResultSet resultSet = preparedStatement.executeQuery();
-            while (resultSet.next()){
+            while (resultSet.next()) {
                 int id = resultSet.getInt("id");
                 String name = resultSet.getString("name");
                 String email = resultSet.getString("email");
                 String country = resultSet.getString("country");
-                User us = new User(id,name,email,country);
+                User us = new User(id, name, email, country);
                 user.add(us);
             }
         } catch (SQLException e) {
-            e.printStackTrace();;
+            e.printStackTrace();
+            ;
         }
         return user;
     }

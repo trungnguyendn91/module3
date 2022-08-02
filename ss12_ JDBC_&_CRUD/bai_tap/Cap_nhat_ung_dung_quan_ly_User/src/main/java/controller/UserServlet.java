@@ -3,7 +3,6 @@ package controller;
 import model.User;
 import repository.IUserRepository;
 import repository.impl.UserRepositoryImpl;
-import service.IUserService;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -13,7 +12,7 @@ import java.io.IOException;
 import java.sql.SQLException;
 import java.util.List;
 
-@javax.servlet.annotation.WebServlet(name = "UserServlet", urlPatterns ={"","/users"})
+@javax.servlet.annotation.WebServlet(name = "UserServlet", urlPatterns = {"", "/users"})
 public class UserServlet extends javax.servlet.http.HttpServlet {
     private static final long serialVersionUID = 1L;
     private IUserRepository userRepository;
@@ -66,7 +65,7 @@ public class UserServlet extends javax.servlet.http.HttpServlet {
                     deleteUser(request, response);
                     break;
                 case "sort":
-                    sortUsers(request,response);
+                    sortUsers(request, response);
                     break;
                 default:
                     listUser(request, response);
@@ -79,7 +78,6 @@ public class UserServlet extends javax.servlet.http.HttpServlet {
     }
 
 
-
     private void showNewForm(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         RequestDispatcher dispatcher = request.getRequestDispatcher("user/create.jsp");
@@ -87,7 +85,7 @@ public class UserServlet extends javax.servlet.http.HttpServlet {
     }
 
     private void showEditForm(HttpServletRequest request, HttpServletResponse response)
-            throws SQLException, ServletException, IOException {
+            throws ServletException, IOException {
         int id = Integer.parseInt(request.getParameter("id"));
         User existingUser = userRepository.selectUser(id);
         RequestDispatcher dispatcher = request.getRequestDispatcher("user/edit.jsp");
@@ -130,6 +128,7 @@ public class UserServlet extends javax.servlet.http.HttpServlet {
         RequestDispatcher dispatcher = request.getRequestDispatcher("user/list.jsp");
         dispatcher.forward(request, response);
     }
+
     private void listUser(HttpServletRequest request, HttpServletResponse response)
             throws SQLException, IOException, ServletException {
         List<User> listUser = userRepository.selectAllUsers();
@@ -141,7 +140,7 @@ public class UserServlet extends javax.servlet.http.HttpServlet {
     private void searchCountry(HttpServletRequest request, HttpServletResponse response) {
         String search = request.getParameter("search");
         List<User> user = userRepository.findByCountry(search);
-        request.setAttribute("user",user);
+        request.setAttribute("user", user);
         try {
             request.getRequestDispatcher("user/list.jsp").forward(request, response);
         } catch (ServletException e) {
@@ -150,6 +149,7 @@ public class UserServlet extends javax.servlet.http.HttpServlet {
             e.printStackTrace();
         }
     }
+
     private void sortUsers(HttpServletRequest request, HttpServletResponse response) {
         RequestDispatcher requestDispatcher = request.getRequestDispatcher("user/list.jsp");
         List<User> user = userRepository.allSort();
