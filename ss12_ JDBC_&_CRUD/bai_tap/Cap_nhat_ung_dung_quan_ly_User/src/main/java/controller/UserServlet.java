@@ -115,7 +115,9 @@ public class UserServlet extends javax.servlet.http.HttpServlet {
         User book = new User(id, name, email, country);
         userRepository.updateUser(book);
         RequestDispatcher dispatcher = request.getRequestDispatcher("user/edit.jsp");
+        listUser(request, response);
         dispatcher.forward(request, response);
+
     }
 
     private void deleteUser(HttpServletRequest request, HttpServletResponse response)

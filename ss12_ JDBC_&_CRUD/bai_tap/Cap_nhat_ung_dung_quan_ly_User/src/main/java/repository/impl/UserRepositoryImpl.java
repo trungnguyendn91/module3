@@ -142,7 +142,7 @@ public class UserRepositoryImpl implements IUserRepository {
         try {
             Connection connection = getConnection();
             PreparedStatement preparedStatement = connection.prepareStatement(FIND_BY_COUNTRY);
-            preparedStatement.setString(1, country);
+            preparedStatement.setString(1,"%" + country + "%");
             ResultSet resultSet = preparedStatement.executeQuery();
             while (resultSet.next()) {
                 int id = resultSet.getInt("id");

@@ -12,14 +12,14 @@
 <head>
     <title>User Management Application</title>
 </head>
-<body  align="center">
+<body  align="center" style="background-color: cornflowerblue">
 
     <h1>User Management</h1>
     <h2>
         <a href="/users?action=create">Thêm mới</a>
     </h2>
     <form action="/users?action=search" method="post">
-        <input type="text" name="search">
+        <input required type="text" name="search">
         <button type="submit">tìm bằng country</button>
     </form>
     <a href="/users?action=sort">

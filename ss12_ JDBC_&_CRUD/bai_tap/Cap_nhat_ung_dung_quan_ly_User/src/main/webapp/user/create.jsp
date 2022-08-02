@@ -28,19 +28,19 @@
             <tr>
                 <th>User Name:</th>
                 <td>
-                    <input type="text" name="name" id="name" size="45"/>
+                    <input required type="text" name="name" id="name" size="45"/>
                 </td>
             </tr>
             <tr>
                 <th>User Email:</th>
                 <td>
-                    <input type="text" name="email" id="email" size="45"/>
+                    <input required type="text" name="email" id="email" size="45"/>
                 </td>
             </tr>
             <tr>
                 <th>Country:</th>
                 <td>
-                    <input type="text" name="country" id="country" size="15"/>
+                    <input required type="text" name="country" id="country" size="15"/>
                 </td>
             </tr>
             <tr>

@@ -6,6 +6,7 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix = "fmt" uri = "http://java.sun.com/jsp/jstl/fmt" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
@@ -32,14 +33,14 @@
     </tr>
     <c:forEach items='${products}' var="product">
     <tr>
-
         <td><a href="/products?action=view&id=${product.id}">${product.name}</a></td>
-        <td>${product.price}</td>
+        <td><fmt:formatNumber type = "number"
+                              pattern = "###,###" value = "${product.price}" /></td>
         <td>${product.productDescription}</td>
         <td>${product.producer}</td>
         <td><a href="/products?action=delete&id=${product.id}">Xóa</a></td>
         <td><a href="/products?action=update&id=${product.id}">Sửa</a></td>
-        <td>
+    </tr>
     </c:forEach>
 </table>
 </body>

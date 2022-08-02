@@ -7,6 +7,7 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib prefix = "fmt" uri = "http://java.sun.com/jsp/jstl/fmt" %>
 <html>
 <head>
     <title>$Create Product$</title>
@@ -30,7 +31,13 @@
             </tr>
             <tr>
                 <td>Giá:</td>
-                <td><input type="number" name="price" id="price"></td>
+                <td><fmt:setLocale value="en"/>
+                    <fmt:formatNumber type="number"
+                                      pattern="0" value="${product.price}"
+                                      var="myNum"/>
+                    <input type="number" min="0" name="price" pattern="0"
+                           step="0.01" required
+                           value="${myNum}"/></td>
             </tr>
             <tr>
                 <td>Mô tả:</td>
