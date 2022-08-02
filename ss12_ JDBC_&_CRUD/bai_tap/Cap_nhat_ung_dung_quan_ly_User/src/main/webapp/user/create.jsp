@@ -11,14 +11,17 @@
 <html>
 <head>
     <title>User Management Application</title>
+    <link rel="stylesheet" href="/user/bootstrap-5.0.2-dist/css/bootstrap.min.css">
+    <script src="/user/bootstrap-5.0.2-dist/jquery-3.6.0.min.js"></script>
+    <script src="/user/bootstrap-5.0.2-dist/js/bootstrap.min.js"></script>
 </head>
-<body>
-<center>
-    <h1>User Management</h1>
+<body align="center" style="background-color: cornflowerblue">
+
+    <h1>Add New User</h1>
     <h2>
-        <a href="users?action=users">List All Users</a>
+        <a href="users?action=users" style="color: red">Comeback List User</a>
     </h2>
-</center>
+
 <div align="center">
     <form method="post">
         <table border="1" cellpadding="5">

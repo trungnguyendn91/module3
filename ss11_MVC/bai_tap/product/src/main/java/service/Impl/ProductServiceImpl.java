@@ -1,11 +1,11 @@
 package service.Impl;
 
 import model.Product;
-import service.ProductService;
+import service.IProductService;
 
 import java.util.*;
 
-public class ProductServiceImpl implements ProductService {
+public class ProductServiceImpl implements IProductService {
     private static Map<Integer, Product> products = new HashMap<>();
     static {
 
