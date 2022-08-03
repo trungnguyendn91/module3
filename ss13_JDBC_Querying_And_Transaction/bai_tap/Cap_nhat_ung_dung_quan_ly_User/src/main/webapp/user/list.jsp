@@ -53,42 +53,40 @@
                </td>
                 <td class="text-center">
                     <!-- Button trigger modal -->
-                    <button type="button" class="btn btn-primary" data-bs-toggle="modal"
-                            data-bs-target="#exampleModal-${user.id}">
+                    <button onclick="showInfoDelete('${user.id}','${user.name}')" type="button"
+                            class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
                         Delete
                     </button>
-
-                    <!-- Modal -->
-                    <div class="modal fade" id="exampleModal-${user.id}" tabindex="-1"
-                         aria-labelledby="exampleModalLabel" aria-hidden="true">
-                        <div class="modal-dialog">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <h5 class="modal-title" id="exampleModalLabel">Delete</h5>
-                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                            aria-label="Close"></button>
-                                </div>
-                                <div class="modal-body">
-                                        ${user.id}
-                                        ${user.name}
-                                        ${user.email}
-                                        ${user.country}
-
-                                </div>
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close
-                                    </button>
-                                    <a href="/users?action=delete&id=${user.id}">
-                                        <button type="button" class="btn btn-primary">Save changes</button>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
                 </td>
             </tr>
         </c:forEach>
     </table>
+    <form action="/users?action=delete" method="post">
+        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <input hidden type="text" name="id" id="deleteId">
+                        <span>Bạn có muốn xóa : </span><span id="deleteName"></span>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-primary">Delete</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+    <script>
+        function showInfoDelete(id,name) {
+            document.getElementById("deleteId").value= id;
+            document.getElementById("deleteName").innerText=name;
+        }
+    </script>
 </div>
 </body>
 </html>

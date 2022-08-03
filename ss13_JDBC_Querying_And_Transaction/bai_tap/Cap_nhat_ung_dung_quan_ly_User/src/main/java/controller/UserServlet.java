@@ -39,6 +39,9 @@ public class UserServlet extends javax.servlet.http.HttpServlet {
                 case "search":
                     searchCountry(request, response);
                     break;
+                case "delete":
+                    deleteUser(request, response);
+                    break;
             }
         } catch (SQLException ex) {
             throw new ServletException(ex);
@@ -61,11 +64,12 @@ public class UserServlet extends javax.servlet.http.HttpServlet {
                 case "edit":
                     showEditForm(request, response);
                     break;
-                case "delete":
-                    deleteUser(request, response);
-                    break;
+
                 case "sort":
                     sortUsers(request, response);
+                    break;
+                case "addUserPermision":
+                    addUserPermision(request, response);
                     break;
                 default:
                     listUser(request, response);
@@ -76,7 +80,11 @@ public class UserServlet extends javax.servlet.http.HttpServlet {
             throw new ServletException(ex);
         }
     }
-
+    private void addUserPermision(HttpServletRequest request, HttpServletResponse response) {
+        User user = new User("Quyen", "quyen.nguyen@codegym.vn", "vn");
+        int[] permision = {1, 2, 4};
+        userRepository.addUserTransaction(user, permision);
+    }
 
     private void showNewForm(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -114,9 +122,9 @@ public class UserServlet extends javax.servlet.http.HttpServlet {
 
         User book = new User(id, name, email, country);
         userRepository.updateUser(book);
-        RequestDispatcher dispatcher = request.getRequestDispatcher("user/edit.jsp");
+//        RequestDispatcher dispatcher = request.getRequestDispatcher("/users");
         listUser(request, response);
-        dispatcher.forward(request, response);
+//        dispatcher.forward(request, response);
 
     }
 
