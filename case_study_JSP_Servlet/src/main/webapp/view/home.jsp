@@ -89,8 +89,8 @@
                                 Service
                             </a>
                             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <li><a class="dropdown-item" href="http://localhost:8080/view/listRoom.jsp">Type Room</a></li>
-                                <li><a class="dropdown-item" href="http://localhost:8080/view/listService.jsp">List Service</a></li>
+                                <li><a class="dropdown-item" href="http://localhost:8080/view/service/listRoom.jsp">Type Room</a></li>
+                                <li><a class="dropdown-item" href="http://localhost:8080/view/service/listService.jsp">List Service</a></li>
                             </ul>
                         </li>
                         <li class="nav-item">
