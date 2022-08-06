@@ -94,7 +94,7 @@
                     </ul>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#"  style="color: #b6effb">Contract</a>
+                    <a class="nav-link" href="http://localhost:8080/view/contract/contractList.jsp"  style="color: #b6effb">Contract</a>
                 </li>
             </ul>
             <form class="d-flex">

@@ -27,7 +27,7 @@
 </head>
 <body>
 
-<footer class="text-center text-white" style="background-color: #0dcaf0;">
+<footer class="text-center text-white mt-3" style="background-color: #0dcaf0;">
     <!-- Grid container -->
     <div class="container p-4">
         <!-- Section: Images -->
