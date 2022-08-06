@@ -30,7 +30,7 @@
 <%@include file="/view/include/head.jsp"%>
 <H3 style="text-align: center">Danh Sách Khách Hàng</H3>
 
-<a href="http://localhost:8080/view/customer/addNewCustomer.jsp" >
+<a href="/customers?action=create" >
     <button>Thêm mới</button>
 </a>
 
@@ -40,9 +40,8 @@
 
 <div align="center">
     <table class="table table-success table-striped">
-        <tr>
+        <tr style="text-align: center">
             <th>Id Customer</th>
-            <th>Customer Code</th>
             <th>Type</th>
             <th>Name</th>
             <th>Birthday</th>
@@ -56,7 +55,6 @@
         <c:forEach var="customer" items="${listCustomer}">
             <tr>
                 <td><c:out value="${customer.customerId}"/></td>
-                <td><c:out value="${customer.customerCode}"/></td>
                 <td><c:out value="${customer.customerTypeId}"/></td>
                 <td><c:out value="${customer.customerName}"/></td>
                 <td><c:out value="${customer.customerBirth}"/></td>
@@ -65,16 +63,15 @@
                 <td><c:out value="${customer.customerPhone}"/></td>
                 <td><c:out value="${customer.customerEmail}"/></td>
                 <td><c:out value="${customer.customerAddress}"/></td>
-
                 <td class="text-center">
-                    <a href="/customers?action=edit&id=${customer.id}">
+                    <a href="/customers?action=edit&id=${customer.customerId}">
                         <button type="button" class="btn btn-primary">
                             edit
                         </button></a>
                 </td>
                 <td class="text-center">
                     <!-- Button trigger modal -->
-                    <button onclick="showInfoDelete('${user.id}','${user.name}')" type="button"
+                    <button onclick="showInfoDelete('${customer.customerId}','${customer.customerName}')" type="button"
                             class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
                         Delete
                     </button>
@@ -83,16 +80,16 @@
         </c:forEach>
 
     </table>
-    <form action="" method="post">
+    <form action="/customers?action=delete" method="post">
         <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="deleteModalLabel">Modal title</h5>
+                        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
-                        <input hidden type="text" name="id" id="deleteId">
+                        <input hidden type="text" name="customerId" id="deleteId">
                         <span>Bạn có muốn xóa : </span><span id="deleteName"></span>
                     </div>
                     <div class="modal-footer">

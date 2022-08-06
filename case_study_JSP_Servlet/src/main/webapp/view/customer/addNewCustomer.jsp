@@ -27,87 +27,80 @@
 </head>
 <body style="background-color: powderblue">
 <%@include file="/view/include/head.jsp"%>
+<h2>
+    <a href="/customers" style="color: red">Comeback List User</a>
+</h2>
 <div class="container w-50 mt-2 p-2" style="border: 1px solid grey; border-radius: 15px">
-    <h3 align="center">THÊM THÔNG TIN KHÁCH HÀNG</h3>
-    <form class="row g-3" action="" method="post">
-        <div class="col-md-12">
-            <label class="form-label">Loại Khách</label>
-            <select name=""  class="form-select" onchange="showServiceInput(this)">
-                <option value="Member" >Member</option>
-                <option value="Silver" >Silver</option>
-                <option value="Gold" >Gold</option>
-                <option value="Platinium" >Platinium</option>
-                <option value="Diamond" >Diamond</option>
-            </select>
-        </div>
-
-        <div class="col-md-12">
-            <label for="name" class="form-label">Tên Khách Hàng</label>
-            <input type="text" class="form-control" id="name" name="name">
-        </div>
-        <div class="col-md-12">
-            <label for="area" class="form-label">Ngày sinh</label>
-            <input type="date" class="form-control" id="area" name="area">
-        </div>
-        <div class="col-md-12">
-            <label for="cost" class="form-label">Giới tính</label>
-            <input type="text" class="form-control" id="cost"  name="cost" >
-        </div>
-        <div class="col-md-12">
-            <label for="inputAddress2" class="form-label">Số CMND/CCCD </label>
-            <input type="text" class="form-control" id="inputAddress2"  name="max_people" >
-        </div>
-        <div class="col-md-12">
-            <label for="inputCity" class="form-label">Email</label>
-            <input type="text" class="form-control" id="inputCity" name="rent_type_id">
-        </div>
-        <div class="col-md-12 " id="s1" style="display: none">
-            <label for="standard_room" class="form-label">Địa Chỉ </label>
-            <input type="text" class="form-control" id="standard_room" name="standard_room">
-        </div>
-        <div class="col-12 ">
-            <button type="submit" class="btn btn-primary">Thêm Mới</button>
-        </div>
+    <h2 style="text-align: center">Thêm Khách Hàng</h2>
+    <form method="post">
+        <table border="1" cellpadding="5">
+            <tr>
+                <th>Loại khách:</th>
+                <td>
+                    <select name="ma_loai_khach_hang"  class="form-select ">
+                        <option value="1">Member</option>
+                        <option value="2">Silver</option>
+                        <option value="3">Gold</option>
+                        <option value="4">Platinium</option>
+                        <option value="5">Diamond</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <th>Tên Khách Hàng:</th>
+                <td>
+                    <input required type="text" name="ho_ten" size="45"/>
+                </td>
+            </tr>
+            <tr>
+                <th>Ngày Sinh:</th>
+                <td>
+                    <input required type="date" name="ngay_sinh" size="15"/>
+                </td>
+            </tr>
+            <tr>
+                <th>Giới Tính:</th>
+                <td>
+                    <select name="gioi_tinh"  class="form-select ">
+                        <option value="true">Nam</option>
+                        <option value="false">Nữ</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+            <th>CMND/CCCD:</th>
+                <td>
+                    <input required type="number" name="so_cmnd" size="25"/>
+                </td>
+            </tr>
+            <tr>
+                <th>Số Điện Thoại:</th>
+                <td>
+                <input required type="number" name="so_dien_thoai" size="25"/>
+                </td>
+            </tr>
+            <tr>
+                <th>Email:</th>
+                <td>
+                    <input required type="text" name="email" size="15"/>
+                </td>
+            </tr>
+            <tr>
+                <th>Địa Chỉ:</th>
+                <td>
+                    <input required type="text" name="dia_chi" size="15"/>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2" align="center">
+                    <input type="submit" value="Save"/>
+                </td>
+            </tr>
+        </table>
     </form>
+
 </div>
 
-
-
-<%--<script>
-    function showServiceInput(value) {
-        var v = value.value;
-        switch (v) {
-            case 'None':
-                document.getElementById("s1").style.display="none";
-                document.getElementById("s2").style.display="none";
-                document.getElementById("s3").style.display="none";
-                document.getElementById("s4").style.display="none";
-                document.getElementById("s5").style.display="none";
-                break;
-            case "Villa":
-                document.getElementById("s1").style.display="block";
-                document.getElementById("s2").style.display="block";
-                document.getElementById("s3").style.display="block";
-                document.getElementById("s4").style.display="block";
-                document.getElementById("s5").style.display="none";
-                break;
-            case "House":
-                document.getElementById("s1").style.display="block";
-                document.getElementById("s2").style.display="block";
-                document.getElementById("s4").style.display="block";
-                document.getElementById("s5").style.display="none";
-                document.getElementById("s3").style.display="none";
-                break;
-            case "Room":
-                document.getElementById("s1").style.display="none";
-                document.getElementById("s2").style.display="none";
-                document.getElementById("s3").style.display="none";
-                document.getElementById("s4").style.display="none";
-                document.getElementById("s5").style.display="block";
-                break;
-        }
-    }
-</script>--%>
 
 <%@include file="/view/include/footer.jsp"%>
 <script src="\bootstrap-5.0.2-dist\js\bootstrap.min.js"></script>

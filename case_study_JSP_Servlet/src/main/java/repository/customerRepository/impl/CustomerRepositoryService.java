@@ -26,15 +26,14 @@ public class CustomerRepositoryService implements ICustomerRepository {
         // tạo câu truy vấn
         try {
             PreparedStatement preparedStatement = connection.prepareStatement(INSERT_INTO);
-            preparedStatement.setString(1,customer.getCustomerCode());
-            preparedStatement.setInt(2,customer.getCustomerTypeId());
-            preparedStatement.setString(3,customer.getCustomerName());
-            preparedStatement.setDate(4, Date.valueOf(customer.getCustomerBirth()));
-            preparedStatement.setInt(5, customer.getCustomerGender());
-            preparedStatement.setInt(6, customer.getCustomerIdCard());
-            preparedStatement.setInt(7, customer.getCustomerPhone());
-            preparedStatement.setString(8, customer.getCustomerEmail());
-            preparedStatement.setString(9, customer.getCustomerAddress());
+            preparedStatement.setInt(1,customer.getCustomerTypeId());
+            preparedStatement.setString(2,customer.getCustomerName());
+            preparedStatement.setDate(3, Date.valueOf(customer.getCustomerBirth()));
+            preparedStatement.setBoolean(4, customer.isCustomerGender());
+            preparedStatement.setInt(5, customer.getCustomerIdCard());
+            preparedStatement.setInt(6, customer.getCustomerPhone());
+            preparedStatement.setString(7, customer.getCustomerEmail());
+            preparedStatement.setString(8, customer.getCustomerAddress());
             // câu excuteUpdate trả về số lượng lượng cột bị ảnh hưởng?
             int check =preparedStatement.executeUpdate();
             return (check==1);
@@ -55,15 +54,15 @@ public class CustomerRepositoryService implements ICustomerRepository {
             PreparedStatement preparedStatement = connection.prepareStatement(SELECT_ALL_CUSTOMER);
             ResultSet resultSet =preparedStatement.executeQuery();
             while (resultSet.next()){
-                String customerCode = resultSet.getString("ma_khach_hang"); // colummLable : tên  thuocj tính của bảng
+                int customerCode = resultSet.getInt("ma_khach_hang"); // colummLable : tên  thuocj tính của bảng
                 int customerType  = resultSet.getInt("ma_loai_khach_hang");
                 String customerName = resultSet.getString("ho_ten");
                 String customerBirth = resultSet.getString("ngay_sinh");
-                int customerGender = resultSet.getInt("gioi_tinh");
-                int customerIdCard = resultSet.getInt("idCard");
-                int customerPhone = resultSet.getInt("phone_number");
+                boolean customerGender = resultSet.getBoolean("gioi_tinh");
+                int customerIdCard = resultSet.getInt("so_cmnd");
+                int customerPhone = resultSet.getInt("so_dien_thoai");
                 String email = resultSet.getString("email");
-                String customerAddress = resultSet.getString("address");
+                String customerAddress = resultSet.getString("dia_chi");
                 Customer customer = new Customer(customerCode,customerType,customerName,customerBirth,customerGender,customerIdCard,customerPhone,email,customerAddress);
                 customerList.add(customer);
             }
@@ -76,6 +75,17 @@ public class CustomerRepositoryService implements ICustomerRepository {
 
     @Override
     public boolean deleteCustomer(int id) throws SQLException {
+        int rowDeleted;
+        CallableStatement callableStatement;
+        try {Connection connection = BaseRepository.getConnectDB();
+//             PreparedStatement statement = connection.prepareStatement(DELETE_USERS_SQL);
+            callableStatement = connection.prepareCall(DELETE_CUSTOMER);
+            callableStatement.setInt(1, id);
+            rowDeleted = callableStatement.executeUpdate() ;
+            return rowDeleted >0? true:false;
+        }catch (SQLException e){
+            e.printStackTrace();
+        }
         return false;
     }
 
@@ -88,4 +98,6 @@ public class CustomerRepositoryService implements ICustomerRepository {
     public List<Customer> findByName(String name) {
         return null;
     }
+
+
 }
