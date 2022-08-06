@@ -42,6 +42,7 @@
     <table class="table table-success table-striped">
         <tr>
             <th>Id Customer</th>
+            <th>Customer Code</th>
             <th>Type</th>
             <th>Name</th>
             <th>Birthday</th>
@@ -52,81 +53,35 @@
             <th>Address</th>
             <th class="text-center" colspan="2">Actions</th>
         </tr>
-        <tr>
-            <td>1</td>
-            <td>Diamon</td>
-            <td>Hoàng Trung</td>
-            <td>27/7/1989</td>
-            <td>Nam</td>
-            <td>223453212</td>
-            <td>0907993882</td>
-            <td>hoangtrung@gmail.com</td>
-            <td>Đà Nẵng-Việt Nam</td>
-            <td class="text-center">
-                <a href="http://localhost:8080/view/customer/editCustomer.jsp">
-                    <button onclick="showInfoUpdate" type="button"
-                            class="btn btn-primary" data-bs-popper="modal" data-bs-target="#updateModal">
-                        edit
-                    </button></a>
-            </td>
-            <td class="text-center">
-                <!-- Button trigger modal -->
-                <button onclick="showInfoDelete()" type="button"
-                        class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                    Delete
-                </button>
-            </td>
-        </tr>
-        <tr>
-            <td>21</td>
-            <td>Gold</td>
-            <td>Diana</td>
-            <td>27/7/1987</td>
-            <td>Nữ</td>
-            <td>7483928374231</td>
-            <td>0905856789</td>
-            <td>ana@gmail.com</td>
-            <td>Sydney-Australia</td>
-            <td class="text-center">
-                <a href="http://localhost:8080/view/customer/editCustomer.jsp">
-                    <button onclick="showInfoUpdate" type="button"
-                            class="btn btn-primary" data-bs-popper="modal" data-bs-target="#updateModal">
-                        edit
-                    </button></a>
-            </td>
-            <td class="text-center">
-                <!-- Button trigger modal -->
-                <button onclick="showInfoDelete()" type="button"
-                        class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                    Delete
-                </button>
-            </td>
-        </tr>
-        <tr>
-            <td>12</td>
-            <td>Gold</td>
-            <td>Arnold</td>
-            <td>27/7/1993</td>
-            <td>Nam</td>
-            <td>22223453212</td>
-            <td>09058793882</td>
-            <td>hoangtrung@gmail.com</td>
-            <td>Đà Nẵng-Việt Nam</td>
-            <td class="text-center">
-                <a href="http://localhost:8080/view/customer/editCustomer.jsp">
-                    <button onclick="showInfoUpdate" type="button"
-                            class="btn btn-primary" data-bs-popper="modal" data-bs-target="#updateModal">
-                        edit
-                    </button></a>
-            </td>
-            <td class="text-center">
-                <!-- Button trigger modal -->
-                <button onclick="showInfoDelete()" type="button"
-                        class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                    Delete
-                </button>
-            </td>
-        </tr>
+        <c:forEach var="customer" items="${listCustomer}">
+            <tr>
+                <td><c:out value="${customer.customerId}"/></td>
+                <td><c:out value="${customer.customerCode}"/></td>
+                <td><c:out value="${customer.customerTypeId}"/></td>
+                <td><c:out value="${customer.customerName}"/></td>
+                <td><c:out value="${customer.customerBirth}"/></td>
+                <td><c:out value="${customer.customerGender}"/></td>
+                <td><c:out value="${customer.customerIdCard}"/></td>
+                <td><c:out value="${customer.customerPhone}"/></td>
+                <td><c:out value="${customer.customerEmail}"/></td>
+                <td><c:out value="${customer.customerAddress}"/></td>
+
+                <td class="text-center">
+                    <a href="/customers?action=edit&id=${customer.id}">
+                        <button type="button" class="btn btn-primary">
+                            edit
+                        </button></a>
+                </td>
+                <td class="text-center">
+                    <!-- Button trigger modal -->
+                    <button onclick="showInfoDelete('${user.id}','${user.name}')" type="button"
+                            class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                        Delete
+                    </button>
+                </td>
+            </tr>
+        </c:forEach>
+
     </table>
     <form action="" method="post">
         <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
