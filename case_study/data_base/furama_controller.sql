@@ -56,7 +56,8 @@ CREATE TABLE
     so_cmnd VARCHAR(45),
     so_dien_thoai VARCHAR(45),
     email VARCHAR(45),
-    dia_chi VARCHAR(45)
+    dia_chi VARCHAR(45),
+    `status` bit(1) default 1
 );
  
 CREATE TABLE 
@@ -89,7 +90,8 @@ CREATE TABLE
     mo_ta_tien_nghi_khac VARCHAR(45),
     dien_tich_ho_boi DOUBLE,
     so_tang INT,
-    dich_vu_mien_phi_di_kem TEXT
+    dich_vu_mien_phi_di_kem TEXT,
+     `status` bit(1) default 1
 );
 
 CREATE TABLE 
@@ -228,5 +230,3 @@ VALUES
  ("7", "1", "2", "2"),
  ("8", "12", "2", "2");
 
-
-	

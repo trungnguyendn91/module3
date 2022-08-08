@@ -1,9 +1,9 @@
-package service.impl;
+package service.customer.impl;
 
 import model.customer.Customer;
-import repository.customerRepository.ICustomerRepository;
-import repository.customerRepository.impl.CustomerRepositoryService;
-import service.ICustomerService;
+import repository.customer_repository.ICustomerRepository;
+import repository.customer_repository.impl.CustomerRepositoryService;
+import service.customer.ICustomerService;
 
 import java.sql.SQLException;
 import java.util.List;
@@ -11,8 +11,8 @@ import java.util.List;
 public class CustomerService implements ICustomerService {
     ICustomerRepository iCustomerRepository = new CustomerRepositoryService();
     @Override
-    public void insertCustomer(Customer customer) throws SQLException {
-        iCustomerRepository.insertCustomer(customer);
+    public boolean addCustomer(Customer customer) {
+        return iCustomerRepository.addCustomer(customer);
     }
 
     @Override
@@ -26,13 +26,18 @@ public class CustomerService implements ICustomerService {
     }
 
     @Override
-    public boolean updateCustomer(Customer customer) throws SQLException {
-        return iCustomerRepository.updateCustomer(customer);
+    public boolean updateCustomer(Customer customer,int id) throws SQLException {
+        return iCustomerRepository.updateCustomer(customer,id);
     }
 
     @Override
     public List<Customer> findByName(String name) {
         return iCustomerRepository.findByName(name);
+    }
+
+    @Override
+    public Customer findCustomerById(int id) {
+        return iCustomerRepository.findCustomerById(id);
     }
 
 

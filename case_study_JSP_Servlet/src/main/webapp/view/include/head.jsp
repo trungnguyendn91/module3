@@ -82,7 +82,7 @@
                     <a class="nav-link active" aria-current="page" href="http://localhost:8080/view/employee/employeeList.jsp"  style="color: #b6effb">Employee</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="http://localhost:8080/view/customer/customerList.jsp"  style="color: #b6effb">Customer</a>
+                    <a class="nav-link" href="/customers"  style="color: #b6effb">Customer</a>
                 </li>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#"  style="color: #b6effb" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -90,17 +90,13 @@
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                         <li><a class="dropdown-item" href="http://localhost:8080/view/service/listRoom.jsp">Type Room</a></li>
-                        <li><a class="dropdown-item" href="http://localhost:8080/view/service/listService.jsp">List Service</a></li>
+                        <li><a class="dropdown-item" href="/facility">List Service</a></li>
                     </ul>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="http://localhost:8080/view/contract/contractList.jsp"  style="color: #b6effb">Contract</a>
                 </li>
             </ul>
-            <form class="d-flex">
-                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                <button class="btn btn-outline-success" type="submit" style="color: #b6effb">Search</button>
-            </form>
         </div>
     </div>
 </nav>

@@ -18,7 +18,7 @@
             /*position: -webkit-sticky;*/
             /*left: 0;*/
             position: fixed;
-            top:150px;
+            top: 150px;
             width: 1300px;
             margin: auto;
         }
@@ -27,17 +27,34 @@
 </head>
 <body style="background-color: powderblue">
 
-<%@include file="/view/include/head.jsp"%>
+<%@include file="/view/include/head.jsp" %>
 <H3 style="text-align: center">Danh Sách Khách Hàng</H3>
+<div class>
+    <div class="row">
+        <div class="col-lg-4 ">
+            <div class="d-flex">
+                <a href="/customers?action=create">
+                    <button>Thêm mới</button>
+                </a>
+            </div>
+        </div>
+        <div class="col-lg-4 ">
 
-<a href="/customers?action=create" >
-    <button>Thêm mới</button>
-</a>
-
-<a href="">
+        </div>
+        <div class="col-lg-4 ">
+            <div class="container-fluid">
+                <form action="/customers?action=search" method="post">
+                    <input required type="text" name="search">
+                    <button type="submit">Tìm bằng tên</button>
+                </form>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<a href="" class="container-fluid">
     <button type="submit">Sắp xếp</button>
 </a>
-
 <div align="center">
     <table class="table table-success table-striped">
         <tr style="text-align: center">
@@ -54,20 +71,21 @@
         </tr>
         <c:forEach var="customer" items="${listCustomer}">
             <tr>
-                <td><c:out value="${customer.customerId}"/></td>
-                <td><c:out value="${customer.customerTypeId}"/></td>
-                <td><c:out value="${customer.customerName}"/></td>
-                <td><c:out value="${customer.customerBirth}"/></td>
-                <td><c:out value="${customer.customerGender}"/></td>
-                <td><c:out value="${customer.customerIdCard}"/></td>
-                <td><c:out value="${customer.customerPhone}"/></td>
-                <td><c:out value="${customer.customerEmail}"/></td>
-                <td><c:out value="${customer.customerAddress}"/></td>
+                <td>${customer.customerId}</td>
+                <td>${customer.customerTypeId}</td>
+                <td>${customer.customerName}</td>
+                <td>${customer.customerBirth}</td>
+                <td>${customer.customerGender}</td>
+                <td>${customer.customerIdCard}</td>
+                <td>${customer.customerPhone}</td>
+                <td>${customer.customerEmail}</td>
+                <td>${customer.customerAddress}</td>
                 <td class="text-center">
                     <a href="/customers?action=edit&id=${customer.customerId}">
                         <button type="button" class="btn btn-primary">
                             edit
-                        </button></a>
+                        </button>
+                    </a>
                 </td>
                 <td class="text-center">
                     <!-- Button trigger modal -->
@@ -80,34 +98,36 @@
         </c:forEach>
 
     </table>
-    <form action="/customers?action=delete" method="post">
-        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog">
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <form action="/customers?action=delete" method="post">
                 <div class="modal-content">
                     <div class="modal-header">
                         <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
-                        <input hidden type="text" name="customerId" id="deleteId">
-                        <span>Bạn có muốn xóa : </span><span id="deleteName"></span>
+                        <input type="text" name="deleteId" id="deleteId">
+                        <span>Bạn có muốn xóa khách hàng: </span><span id="deleteName"></span>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                         <button type="submit" class="btn btn-primary">Delete</button>
                     </div>
                 </div>
-            </div>
+            </form>
         </div>
-    </form>
+    </div>
     <script>
-        function showInfoDelete(id,name) {
-            document.getElementById("deleteId").value= id;
-            document.getElementById("deleteName").innerText=name;
+        function showInfoDelete(id, name) {
+            document.getElementById("deleteId").value = id;
+            document.getElementById("deleteName").innerText = name;
+
         }
     </script>
 </div>
-<%@include file="/view/include/footer.jsp"%>
+<%@include file="/view/include/footer.jsp" %>
 <script src="\bootstrap-5.0.2-dist\js\bootstrap.min.js"></script>
 <script src="\bootstrap-5.0.2-dist\jquery-3.6.0.min.js"></script>
 </body>

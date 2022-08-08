@@ -30,7 +30,7 @@
 <%@include file="/view/include/head.jsp"%>
 <H3 style="text-align: center">Danh Sách Các Dịch Vụ</H3>
 
-<a href="http://localhost:8080/view/service/newService.jsp" style="color: red">
+<a href="/facility?action=create" style="color: red">
     <button>Thêm mới</button>
 </a>
 
@@ -41,97 +41,74 @@
 <div align="center">
     <table class="table table-success table-striped">
         <tr>
-            <th>Loại Phòng</th>
-            <th>Diện Tích(m <sup>2</sup>)</th>
-            <th>View</th>
-            <th>Tiện Ích</th>
+            <th>Mã dịch vụ</th><%-- String serviceName = resultSet.getString("ten_dich_vu");--%>
+            <th>Tên dịch vụ</th><%-- String serviceName = resultSet.getString("ten_dich_vu");--%>
+            <th>Diện Tích(m <sup>2</sup>)</th><%--int serviceArea  = resultSet.getInt("dien_tich");--%>
+            <th>Giá Thuê</th><%--double serviceCost = resultSet.getDouble("gia_thue");;--%>
+            <th>Số Người</th><%--int serviceMaxPeople = resultSet.getInt("so_nguoi_toi_da");--%>
+            <th>Kiểu Thuê</th><%--int rentTypeId = resultSet.getInt("ma_kieu_thue");--%>
+            <th>Loại Dịch Vụ</th><%--int serviceTypeId = resultSet.getInt("ma_loai_dich_vu");--%>
+            <th>Tiêu Chuẩn Phòng</th><%-- String standardRoom = resultSet.getString("tieu_chuan_phong");--%>
+            <th>Tiện Nghi</th><%-- String description = resultSet.getString("mo_ta_tien_nghi_khac");--%>
+            <th>Diện Tích Hồ Bơi</th><%-- Duoble poolArea = resultSet.getString("dien_tich_ho_boi");--%>
+            <th>Số Tầng</th><%--  int numberOfFloor = resultSet.getInt("so_tang");--%>
+            <th>Dịch vụ đi kèm</th><%--  String freeSerVice = resultSet.getString("dich_vu_mien_phi_di_kem");--%>
             <th class="text-center" colspan="2">Actions</th>
         </tr>
+        <c:forEach var="facility" items="${listFacility}">
             <tr>
-                <td>Phòng Suite</td>
-                <td>85.85</td>
-                <td>Hướng Biển</td>
-                <td>Free ăn sáng</td>
+                <td>${facility.facilityId}</td>
+                <td>${facility.facilityName}</td>
+                <td>${facility.facilityArea}</td>
+                <td>${facility.facilityCost}</td>
+                <td>${facility.facilityMaxPeople}</td>
+                <td>${facility.rentTypeId}</td>
+                <td>${facility.facilityTypeId}</td>
+                <td>${facility.standardRoom}</td>
+                <td>${facility.description}</td>
+                <td>${facility.poolArea}</td>
+                <td>${facility.numberOfFloor}</td>
+                <td>${facility.freeSerVice}</td>
                 <td class="text-center">
-                    <a href="http://localhost:8080/view/service/editService.jsp">
-                        <button onclick="showInfoUpdate" type="button"
-                                class="btn btn-primary" data-bs-popper="modal" data-bs-target="#updateModal">
+                    <a href="/facility?action=edit&id=${facility.facilityId}">
+                        <button type="button" class="btn btn-primary">
                             edit
                         </button></a>
                 </td>
                 <td class="text-center">
                     <!-- Button trigger modal -->
-                    <button onclick="showInfoDelete()" type="button"
-                            class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                    <button onclick="showInfoDelete('${facility.facilityId}','${facility.facilityName}')" type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
                         Delete
                     </button>
                 </td>
             </tr>
-        <tr>
-            <td>Phòng Deluxe</td>
-            <td>40.1</td>
-            <td>Hướng Biển</td>
-            <td>Free ăn sáng</td>
-            <td class="text-center">
-                <a href="http://localhost:8080/view/service/editService.jsp">
-                    <button onclick="showInfoUpdate" type="button"
-                            class="btn btn-primary" data-bs-popper="modal" data-bs-target="#updateModal">
-                        edit
-                    </button></a>
-            </td>
-            <td class="text-center">
-                <!-- Button trigger modal -->
-                <button onclick="showInfoDelete()" type="button"
-                        class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                    Delete
-                </button>
-            </td>
-        </tr>
-        <tr>
-            <td>Biệt Thự</td>
-            <td>85.85</td>
-            <td>Hướng Vườn</td>
-            <td>Có Hồ Bơi Riêng</td>
-            <td class="text-center">
-                <a href="http://localhost:8080/view/service/editService.jsp">
-                    <button onclick="showInfoUpdate" type="button"
-                            class="btn btn-primary" data-bs-popper="modal" data-bs-target="#updateModal">
-                        edit
-                    </button></a>
-            </td>
-            <td class="text-center">
-                <!-- Button trigger modal -->
-                <button onclick="showInfoDelete()" type="button"
-                        class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                    Delete
-                </button>
-            </td>
-        </tr>
+        </c:forEach>
     </table>
-    <form action="" method="post">
-        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog">
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <form action="/facility?action=delete" method="post">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="deleteModalLabel">Modal title</h5>
+                        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
-                        <input hidden type="text" name="id" id="deleteId">
-                        <span>Bạn có muốn xóa : </span><span id="deleteName"></span>
+                        <input type="text" name="deleteId" id="deleteId">
+                        <span>Bạn có muốn xóa dịch vụ: </span><span id="deleteName"></span>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                         <button type="submit" class="btn btn-primary">Delete</button>
                     </div>
                 </div>
-            </div>
+            </form>
         </div>
-    </form>
+    </div>
     <script>
         function showInfoDelete(id,name) {
             document.getElementById("deleteId").value= id;
             document.getElementById("deleteName").innerText=name;
+
         }
     </script>
 </div>

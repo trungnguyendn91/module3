@@ -37,7 +37,7 @@
             <tr>
                 <th>Loại khách:</th>
                 <td>
-                    <select name="ma_loai_khach_hang"  class="form-select ">
+                    <select name="ma_loai_khach_hang"  class="form-select " >
                         <option value="1">Member</option>
                         <option value="2">Silver</option>
                         <option value="3">Gold</option>
@@ -49,13 +49,13 @@
             <tr>
                 <th>Tên Khách Hàng:</th>
                 <td>
-                    <input required type="text" name="ho_ten" size="45"/>
+                    <input required type="text" name="ho_ten" size="45" value="${customer.customerName}"/>
                 </td>
             </tr>
             <tr>
                 <th>Ngày Sinh:</th>
                 <td>
-                    <input required type="date" name="ngay_sinh" size="15"/>
+                    <input required type="date" name="ngay_sinh" size="15" value="${customer.customerBirth}"/>
                 </td>
             </tr>
             <tr>
@@ -70,25 +70,25 @@
             <tr>
             <th>CMND/CCCD:</th>
                 <td>
-                    <input required type="number" name="so_cmnd" size="25"/>
+                    <input required type="text" name="so_cmnd" size="25" value="${customer.customerIdCard}"/>
                 </td>
             </tr>
             <tr>
                 <th>Số Điện Thoại:</th>
                 <td>
-                <input required type="number" name="so_dien_thoai" size="25"/>
+                <input required type="text" name="so_dien_thoai" size="25" value="${customer.customerPhone}"/>
                 </td>
             </tr>
             <tr>
                 <th>Email:</th>
                 <td>
-                    <input required type="text" name="email" size="15"/>
+                    <input required type="text" name="email" size="15" value="${customer.email}"/>
                 </td>
             </tr>
             <tr>
                 <th>Địa Chỉ:</th>
                 <td>
-                    <input required type="text" name="dia_chi" size="15"/>
+                    <input required type="text" name="dia_chi" size="15" value="${customer.customerAddress}"/>
                 </td>
             </tr>
             <tr>

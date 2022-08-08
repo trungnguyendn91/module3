@@ -97,4 +97,15 @@ public class Customer {
         this.customerEmail = customerEmail;
         this.customerAddress = customerAddress;
     }
+
+    public Customer(int customerTypeId, String customerName, String customerBirth, boolean customerGender, int customerIdCard, int customerPhone, String customerEmail, String customerAddress) {
+        this.customerTypeId = customerTypeId;
+        this.customerName = customerName;
+        this.customerBirth = customerBirth;
+        this.customerGender = customerGender;
+        this.customerIdCard = customerIdCard;
+        this.customerPhone = customerPhone;
+        this.customerEmail = customerEmail;
+        this.customerAddress = customerAddress;
+    }
 }

@@ -31,67 +31,64 @@
     <h3 align="center">SỬA THÔNG TIN DỊCH VỤ</h3>
     <form class="row g-3" action="" method="post">
         <div class="col-md-12">
-            <label class="form-label">Loại dịch vụ</label>
-            <select name=""  class="form-select" onchange="showServiceInput(this)">
-                <option value="None" >Chọn loại dịch vụ</option>
-                <option value="Villa" >Villa</option>
-                <option value="House" >House</option>
-                <option value="Room" >Room</option>
+            <label for="ten_dich_vu" class="form-label">Tên dịch vụ:</label>
+            <input type="text" class="form-control" id="ten_dich_vu"  name="ten_dich_vu" >
+        </div>
+        <div class="col-md-12">
+            <label for="dien_tich" class="form-label">Diện tích sử dụng (m<sup>2</sup>:</label>
+            <input type="text" class="form-control" id="dien_tich" name="dien_tich">
+        </div>
+        <div class="col-md-12">
+            <label for="gia_thue" class="form-label">Giá thuê:</label>
+            <input type="number" class="form-control" id="gia_thue" name="gia_thue">
+        </div>
+        <div class="col-md-12">
+            <label for="so_nguoi_toi_da" class="form-label">Số người:</label>
+            <input type="number" class="form-control" id="so_nguoi_toi_da" name="so_nguoi_toi_da">
+        </div>
+        <div class="col-md-12">
+            <label for="ma_kieu_thue" class="form-label">Kiểu thuê:</label>
+            <select name="ma_kieu_thue"  id="ma_kieu_thue" class="form-select ">
+                <option value="1">Theo năm</option>
+                <option value="2">Theo tháng</option>
+                <option value="3">Theo ngày</option>
+                <option value="4">Theo giờ</option>
             </select>
         </div>
-
         <div class="col-md-12">
-            <label for="name" class="form-label">Tên dịch vụ</label>
-            <input type="text" class="form-control" id="name" name="name">
-        </div>
-        <div class="col-md-12">
-            <label for="area" class="form-label">Diện tích sử dụng</label>
-            <input type="text" class="form-control" id="area" name="area">
-        </div>
-        <div class="col-md-12">
-            <label for="cost" class="form-label">Chi phí thuê</label>
-            <input type="text" class="form-control" id="cost"  name="cost" >
-        </div>
-        <div class="col-md-12">
-            <label for="inputAddress2" class="form-label">Số lượng người tối đa </label>
-            <input type="text" class="form-control" id="inputAddress2"  name="max_people" >
-        </div>
-        <div class="col-md-12">
-            <label for="inputCity" class="form-label">Kiểu thuê</label>
-            <input type="text" class="form-control" id="inputCity" name="rent_type_id">
+            <label class="form-label">Mã loại dịch vụ</label>
+            <select name="ma_loai_dich_vu"  class="form-select" onchange="showServiceInput(this)">
+                <option value="None" >Chọn loại dịch vụ</option>
+                <option value="1" >Villa</option>
+                <option value="2" >House</option>
+                <option value="3" >Room</option>
+            </select>
         </div>
         <div class="col-md-12 " id="s1" style="display: none">
-            <label for="standard_room" class="form-label">Tiêu chuẩn phòng </label>
-            <input type="text" class="form-control" id="standard_room" name="standard_room">
+            <label for="tieu_chuan_phong" class="form-label">Tiêu chuẩn phòng </label>
+            <input type="text" class="form-control" id="tieu_chuan_phong" name="tieu_chuan_phong">
         </div>
-
         <div class="col-md-12 " id="s2" style="display: none">
-            <label for="description_other_convenience" class="form-label">Mô tả tiện nghi khác</label>
-            <input type="text" class="form-control" id="description_other_convenience" name="description_other_convenience">
+            <label for="mo_ta_tien_nghi_khac" class="form-label">Tiện nghi khác</label>
+            <input type="text" class="form-control" id="mo_ta_tien_nghi_khac" name="mo_ta_tien_nghi_khac">
         </div>
-
         <div class="col-md-12 " id="s3" style="display: none">
-            <label for="pool_area" class="form-label">Diện tích hồ bơi  </label>
-            <input type="text" class="form-control" id="pool_area" name="pool_area">
+            <label for="dien_tich_ho_boi" class="form-label">Diện tích hồ bơi  </label>
+            <input type="number" class="form-control" id="dien_tich_ho_boi" name="dien_tich_ho_boi">
         </div>
-
         <div class="col-md-12" id="s4" style="display: none">
-            <label for="number_of_floors" class="form-label">Số tầng </label>
-            <input type="text" class="form-control" id="number_of_floors" name="number_of_floors">
+            <label for="so_tang" class="form-label">Số tầng </label>
+            <input type="number" class="form-control" id="so_tang" name="so_tang">
         </div>
-
         <div class="col-md-12 " id="s5" style="display: none">
-            <label for="facility_free" class="form-label">Dịch vụ miễn phí đi kèm </label>
-            <input type="text" class="form-control" id="facility_free" name="facility_free">
+            <label for="dich_vu_mien_phi_di_kem" class="form-label">Dịch vụ miễn phí: </label>
+            <input type="text" class="form-control" id="dich_vu_mien_phi_di_kem" name="dich_vu_mien_phi_di_kem">
         </div>
-
         <div class="col-12 ">
-            <button type="submit" class="btn btn-primary">Gửi</button>
+            <button type="submit" class="btn btn-primary">Thay đổi</button>
         </div>
     </form>
 </div>
-
-
 
 <script>
     function showServiceInput(value) {
@@ -104,21 +101,21 @@
                 document.getElementById("s4").style.display="none";
                 document.getElementById("s5").style.display="none";
                 break;
-            case "Villa":
+            case "1":
                 document.getElementById("s1").style.display="block";
                 document.getElementById("s2").style.display="block";
                 document.getElementById("s3").style.display="block";
                 document.getElementById("s4").style.display="block";
                 document.getElementById("s5").style.display="none";
                 break;
-            case "House":
+            case "2":
                 document.getElementById("s1").style.display="block";
                 document.getElementById("s2").style.display="block";
                 document.getElementById("s4").style.display="block";
                 document.getElementById("s5").style.display="none";
                 document.getElementById("s3").style.display="none";
                 break;
-            case "Room":
+            case "3":
                 document.getElementById("s1").style.display="none";
                 document.getElementById("s2").style.display="none";
                 document.getElementById("s3").style.display="none";
