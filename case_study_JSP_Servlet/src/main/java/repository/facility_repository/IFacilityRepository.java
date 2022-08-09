@@ -24,4 +24,5 @@ public interface IFacilityRepository {
     List<ServiceType> getServiceTypeList();
 
     List<RentType> getRentTypeList();
+
 }

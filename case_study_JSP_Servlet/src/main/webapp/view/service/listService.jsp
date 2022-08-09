@@ -29,18 +29,38 @@
 
 <%@include file="/view/include/head.jsp"%>
 <H3 style="text-align: center">Danh Sách Các Dịch Vụ</H3>
+<div class>
+    <div class="row">
+        <div class="col-lg-4 ">
+            <div class="d-flex">
+                <a href="/facility?action=create" style="color: red">
+                    <button>Thêm mới</button>
+                </a>
 
-<a href="/facility?action=create" style="color: red">
-    <button>Thêm mới</button>
-</a>
+            </div>
+        </div>
+        <div class="col-lg-4 ">
 
-<a href="">
+        </div>
+        <div class="col-lg-4 ">
+            <div class="container-fluid">
+                <form action="/facility?action=search" method="post">
+                    <input required type="text" name="search">
+                    <button type="submit">Tìm bằng tên</button>
+                </form>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<a href="" class="container-fluid">
     <button type="submit">Sắp xếp</button>
 </a>
 
 <div align="center">
-    <table class="table table-success table-striped">
-        <tr>
+    <table class="table table-success table-striped" id="tableCustomer">
+        <thead>
+        <tr style="text-align: center;">
             <th>Mã dịch vụ</th><%-- String serviceName = resultSet.getString("ten_dich_vu");--%>
             <th>Tên dịch vụ</th><%-- String serviceName = resultSet.getString("ten_dich_vu");--%>
             <th>Diện Tích(m <sup>2</sup>)</th><%--int serviceArea  = resultSet.getInt("dien_tich");--%>
@@ -48,27 +68,48 @@
             <th>Số Người</th><%--int serviceMaxPeople = resultSet.getInt("so_nguoi_toi_da");--%>
             <th>Kiểu Thuê</th><%--int rentTypeId = resultSet.getInt("ma_kieu_thue");--%>
             <th>Loại Dịch Vụ</th><%--int serviceTypeId = resultSet.getInt("ma_loai_dich_vu");--%>
-            <th>Tiêu Chuẩn Phòng</th><%-- String standardRoom = resultSet.getString("tieu_chuan_phong");--%>
-            <th>Tiện Nghi</th><%-- String description = resultSet.getString("mo_ta_tien_nghi_khac");--%>
-            <th>Diện Tích Hồ Bơi</th><%-- Duoble poolArea = resultSet.getString("dien_tich_ho_boi");--%>
-            <th>Số Tầng</th><%--  int numberOfFloor = resultSet.getInt("so_tang");--%>
-            <th>Dịch vụ đi kèm</th><%--  String freeSerVice = resultSet.getString("dich_vu_mien_phi_di_kem");--%>
+           <%-- <th>Tiêu Chuẩn Phòng</th>&lt;%&ndash; String standardRoom = resultSet.getString("tieu_chuan_phong");&ndash;%&gt;
+            <th>Tiện Nghi</th>&lt;%&ndash; String description = resultSet.getString("mo_ta_tien_nghi_khac");&ndash;%&gt;
+            <th>Diện Tích Hồ Bơi</th>&lt;%&ndash; Duoble poolArea = resultSet.getString("dien_tich_ho_boi");&ndash;%&gt;
+            <th>Số Tầng</th>&lt;%&ndash;  int numberOfFloor = resultSet.getInt("so_tang");&ndash;%&gt;
+            <th>Dịch vụ đi kèm</th>--%><%--  String freeSerVice = resultSet.getString("dich_vu_mien_phi_di_kem");--%>
             <th class="text-center" colspan="2">Actions</th>
         </tr>
+        </thead>
+        <tbody>
         <c:forEach var="facility" items="${listFacility}">
-            <tr>
+            <tr style="text-align: center">
                 <td>${facility.facilityId}</td>
                 <td>${facility.facilityName}</td>
                 <td>${facility.facilityArea}</td>
                 <td>${facility.facilityCost}</td>
                 <td>${facility.facilityMaxPeople}</td>
-                <td>${facility.rentTypeId}</td>
-                <td>${facility.facilityTypeId}</td>
-                <td>${facility.standardRoom}</td>
-                <td>${facility.description}</td>
-                <td>${facility.poolArea}</td>
-                <td>${facility.numberOfFloor}</td>
-                <td>${facility.freeSerVice}</td>
+                <c:if test="${facility.rentTypeId == 1}">
+                    <td>Theo năm</td>
+                </c:if>
+                <c:if test="${facility.rentTypeId == 2}">
+                    <td>Theo tháng</td>
+                </c:if>
+                <c:if test="${facility.rentTypeId == 3}">
+                    <td>Theo ngày</td>
+                </c:if>
+                <c:if test="${facility.rentTypeId == 4}">
+                    <td>Theo giờ</td>
+                </c:if>
+                <c:if test="${facility.facilityTypeId == 1}">
+                    <td>Villa</td>
+                </c:if>
+                <c:if test="${facility.facilityTypeId == 2}">
+                    <td>House</td>
+                </c:if>
+                <c:if test="${facility.facilityTypeId == 3}">
+                    <td>Room</td>
+                </c:if>
+<%--                <td>${facility.standardRoom}</td>--%>
+<%--                <td>${facility.description}</td>--%>
+<%--                <td>${facility.poolArea}</td>--%>
+<%--                <td>${facility.numberOfFloor}</td>--%>
+<%--                <td>${facility.freeSerVice}</td>--%>
                 <td class="text-center">
                     <a href="/facility?action=edit&id=${facility.facilityId}">
                         <button type="button" class="btn btn-primary">
@@ -83,6 +124,7 @@
                 </td>
             </tr>
         </c:forEach>
+        </tbody>
     </table>
     <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog">
@@ -115,5 +157,17 @@
 <%@include file="/view/include/footer.jsp"%>
 <script src="\bootstrap-5.0.2-dist\js\bootstrap.min.js"></script>
 <script src="\bootstrap-5.0.2-dist\jquery-3.6.0.min.js"></script>
+<script src="datatables/js/jquery.dataTables.min.js"></script>
+<script src="datatables/js/dataTables.bootstrap5.min.js"></script>
+<script>
+    $(document).ready(function() {
+        $('#tableCustomer').dataTable( {
+            "dom": 'lrtip',
+            "lengthChange": false,
+            "pageLength": 5
+        } );
+    } );
+</script>
+
 </body>
 </html>

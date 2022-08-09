@@ -62,7 +62,7 @@
         <div class="col-md-12">
             <label class="form-label">Mã loại dịch vụ</label>
             <select name="ma_loai_dich_vu"  class="form-select" onchange="showServiceInput(this)">
-                <option value="None" >Chọn loại dịch vụ</option>
+                <option value="None">Chọn loại dịch vụ</option>
                 <option value="1" >Villa</option>
                 <option value="2" >House</option>
                 <option value="3" >Room</option>

@@ -11,6 +11,7 @@
 <head>
     <title>Add New Customer</title>
     <link rel="stylesheet" href="\bootstrap-5.0.2-dist\css\bootstrap.min.css">
+
     <style>
         #sticky {
             /*position: relative;*/
@@ -28,7 +29,7 @@
 <body style="background-color: powderblue">
 <%@include file="/view/include/head.jsp"%>
 <h2>
-    <a href="/customers" style="color: red">Comeback List User</a>
+    <a href="/customers" style="color: red">Comeback List Customer</a>
 </h2>
 <div class="container w-50 mt-2 p-2" style="border: 1px solid grey; border-radius: 15px">
     <h2 style="text-align: center">Thêm Khách Hàng</h2>
@@ -50,6 +51,7 @@
                 <th>Tên Khách Hàng:</th>
                 <td>
                     <input required type="text" name="ho_ten" size="45" value="${customer.customerName}"/>
+                    <div style="color: red">${nameErr}</div>
                 </td>
             </tr>
             <tr>
@@ -70,19 +72,19 @@
             <tr>
             <th>CMND/CCCD:</th>
                 <td>
-                    <input required type="text" name="so_cmnd" size="25" value="${customer.customerIdCard}"/>
+                    <input required type="number" name="so_cmnd" size="25" value="${customer.customerIdCard}"/>
                 </td>
             </tr>
             <tr>
                 <th>Số Điện Thoại:</th>
                 <td>
-                <input required type="text" name="so_dien_thoai" size="25" value="${customer.customerPhone}"/>
+                <input required type="number" name="so_dien_thoai" size="25" value="${customer.customerPhone}"/>
                 </td>
             </tr>
             <tr>
                 <th>Email:</th>
                 <td>
-                    <input required type="text" name="email" size="15" value="${customer.email}"/>
+                    <input required type="text" name="email" size="15" value="${customer.customerEmail}"/>
                 </td>
             </tr>
             <tr>
@@ -94,6 +96,7 @@
             <tr>
                 <td colspan="2" align="center">
                     <input type="submit" value="Save"/>
+
                 </td>
             </tr>
         </table>
@@ -103,7 +106,8 @@
 
 
 <%@include file="/view/include/footer.jsp"%>
-<script src="\bootstrap-5.0.2-dist\js\bootstrap.min.js"></script>
 <script src="\bootstrap-5.0.2-dist\jquery-3.6.0.min.js"></script>
+<script src="\bootstrap-5.0.2-dist\js\bootstrap.min.js"></script>
+
 </body>
 </html>

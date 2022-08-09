@@ -37,7 +37,7 @@ public class FacilityServlet extends HttpServlet {
                     updateFacility(request,response);
                     break;
                 case "search":
-                    //searchCountry(request, response);
+                    searchFacility(request, response);
                     break;
                 case "delete":
                     deleteFacility(request, response);
@@ -45,6 +45,19 @@ public class FacilityServlet extends HttpServlet {
             }
         } catch (SQLException ex) {
             throw new ServletException(ex);
+        }
+    }
+
+    private void searchFacility(HttpServletRequest request, HttpServletResponse response) {
+        String search = request.getParameter("search");
+        List<Facility> facilityList = facilityService.findByServiceName(search);
+        request.setAttribute("listFacility", facilityList);
+        try {
+            request.getRequestDispatcher("view/service/listService.jsp").forward(request, response);
+        } catch (ServletException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
         }
     }
 
@@ -154,15 +167,16 @@ public class FacilityServlet extends HttpServlet {
     }
 
     private void showEditForm(HttpServletRequest request, HttpServletResponse response) {
-        RequestDispatcher requestDispatcher = request.getRequestDispatcher("view/service/editService.jsp");
+
         int id = Integer.parseInt(request.getParameter("id"));
         Facility facility = facilityService.findFacilityById(id);
+        RequestDispatcher requestDispatcher = request.getRequestDispatcher("view/service/editService.jsp");
         List<RentType> rentalTypeList = facilityService.getRentTypeList();
         List<ServiceType> serviceTypes = facilityService.getServiceTypeList();
         request.setAttribute("rentalTypeList",rentalTypeList);
         request.setAttribute("serviceTypes",serviceTypes);
         request.setAttribute("facility",facility);
-        request.setAttribute("id",id);
+       request.setAttribute("id",id);
         try {
             requestDispatcher.forward(request,response);
         } catch (ServletException e) {
@@ -175,7 +189,7 @@ public class FacilityServlet extends HttpServlet {
     private void showNewListFacility(HttpServletRequest request, HttpServletResponse response) {
         List<Facility> facilityList = facilityService.selectAllFacility();
         request.setAttribute("facilityList",facilityList);
-        RequestDispatcher requestDispatcher = request.getRequestDispatcher("view/service/editService.jsp");
+        RequestDispatcher requestDispatcher = request.getRequestDispatcher("view/service/newService.jsp");
 
         try {
             requestDispatcher.forward(request,response);
@@ -188,8 +202,8 @@ public class FacilityServlet extends HttpServlet {
 
     private void listFacility(HttpServletRequest request, HttpServletResponse response)
     {
-        List<Facility> facilityList = facilityService.selectAllFacility();
-        request.setAttribute("listFacility", facilityList);
+        List<Facility> listFacility = facilityService.selectAllFacility();
+        request.setAttribute("listFacility", listFacility);
         RequestDispatcher dispatcher = request.getRequestDispatcher("view/service/listService.jsp");
         try {
             dispatcher.forward(request, response);

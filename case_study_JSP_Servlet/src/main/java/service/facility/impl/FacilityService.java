@@ -37,7 +37,7 @@ public class FacilityService implements IFacilityService {
 
     @Override
     public List<Facility> findByServiceName(String name) {
-        return null;
+        return iFacilityRepository.findByServiceName(name);
     }
 
     @Override

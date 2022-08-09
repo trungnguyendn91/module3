@@ -6,13 +6,14 @@ public class Customer {
     private String customerName;
     private String customerBirth;
     private boolean customerGender;
-    private int customerIdCard;
-    private int customerPhone;
+    private String customerIdCard;
+    private String customerPhone;
     private String customerEmail;
     private String customerAddress;
 
     public Customer() {
     }
+
 
     public int getCustomerId() {
         return customerId;
@@ -54,19 +55,19 @@ public class Customer {
         this.customerGender = customerGender;
     }
 
-    public int getCustomerIdCard() {
+    public String getCustomerIdCard() {
         return customerIdCard;
     }
 
-    public void setCustomerIdCard(int customerIdCard) {
+    public void setCustomerIdCard(String customerIdCard) {
         this.customerIdCard = customerIdCard;
     }
 
-    public int getCustomerPhone() {
+    public String getCustomerPhone() {
         return customerPhone;
     }
 
-    public void setCustomerPhone(int customerPhone) {
+    public void setCustomerPhone(String customerPhone) {
         this.customerPhone = customerPhone;
     }
 
@@ -86,7 +87,8 @@ public class Customer {
         this.customerAddress = customerAddress;
     }
 
-    public Customer(int customerId, int customerTypeId, String customerName, String customerBirth, boolean customerGender, int customerIdCard, int customerPhone, String customerEmail, String customerAddress) {
+    public Customer(int customerId, int customerTypeId, String customerName, String customerBirth,
+                    boolean customerGender, String customerIdCard, String customerPhone, String customerEmail, String customerAddress) {
         this.customerId = customerId;
         this.customerTypeId = customerTypeId;
         this.customerName = customerName;
@@ -98,7 +100,8 @@ public class Customer {
         this.customerAddress = customerAddress;
     }
 
-    public Customer(int customerTypeId, String customerName, String customerBirth, boolean customerGender, int customerIdCard, int customerPhone, String customerEmail, String customerAddress) {
+    public Customer(int customerTypeId, String customerName, String customerBirth, boolean customerGender,
+                    String customerIdCard, String customerPhone, String customerEmail, String customerAddress) {
         this.customerTypeId = customerTypeId;
         this.customerName = customerName;
         this.customerBirth = customerBirth;

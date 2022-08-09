@@ -32,23 +32,28 @@
     <form class="row g-3" action="" method="post">
         <div class="col-md-12">
             <label for="ten_dich_vu" class="form-label">Tên dịch vụ:</label>
-            <input type="text" class="form-control" id="ten_dich_vu"  name="ten_dich_vu" >
+            <input type="text" class="form-control" id="ten_dich_vu"  name="ten_dich_vu" required
+                   value="${facility.facilityName}">
         </div>
         <div class="col-md-12">
             <label for="dien_tich" class="form-label">Diện tích sử dụng (m<sup>2</sup>:</label>
-            <input type="text" class="form-control" id="dien_tich" name="dien_tich">
+            <input type="text" class="form-control" id="dien_tich" name="dien_tich" required
+                   value="${facility.facilityArea}">
         </div>
         <div class="col-md-12">
             <label for="gia_thue" class="form-label">Giá thuê:</label>
-            <input type="number" class="form-control" id="gia_thue" name="gia_thue">
+            <input type="number" class="form-control" id="gia_thue" name="gia_thue" required
+                   value="${facility.facilityCost}">
         </div>
         <div class="col-md-12">
             <label for="so_nguoi_toi_da" class="form-label">Số người:</label>
-            <input type="number" class="form-control" id="so_nguoi_toi_da" name="so_nguoi_toi_da">
+            <input type="number" class="form-control" id="so_nguoi_toi_da" name="so_nguoi_toi_da" required
+                   value="${facility.facilityMaxPeople}">
         </div>
         <div class="col-md-12">
             <label for="ma_kieu_thue" class="form-label">Kiểu thuê:</label>
-            <select name="ma_kieu_thue"  id="ma_kieu_thue" class="form-select ">
+            <select name="ma_kieu_thue"  id="ma_kieu_thue" class="form-select "
+                    value="${facility.rentTypeId}">
                 <option value="1">Theo năm</option>
                 <option value="2">Theo tháng</option>
                 <option value="3">Theo ngày</option>
@@ -57,7 +62,8 @@
         </div>
         <div class="col-md-12">
             <label class="form-label">Mã loại dịch vụ</label>
-            <select name="ma_loai_dich_vu"  class="form-select" onchange="showServiceInput(this)">
+            <select name="ma_loai_dich_vu"  class="form-select" onchange="showServiceInput(this)"
+                    value="${facility.facilityTypeId}">
                 <option value="None" >Chọn loại dịch vụ</option>
                 <option value="1" >Villa</option>
                 <option value="2" >House</option>
@@ -66,23 +72,28 @@
         </div>
         <div class="col-md-12 " id="s1" style="display: none">
             <label for="tieu_chuan_phong" class="form-label">Tiêu chuẩn phòng </label>
-            <input type="text" class="form-control" id="tieu_chuan_phong" name="tieu_chuan_phong">
+            <input type="text" class="form-control" id="tieu_chuan_phong" name="tieu_chuan_phong" required
+                   value="${facility.standardRoom}">
         </div>
         <div class="col-md-12 " id="s2" style="display: none">
             <label for="mo_ta_tien_nghi_khac" class="form-label">Tiện nghi khác</label>
-            <input type="text" class="form-control" id="mo_ta_tien_nghi_khac" name="mo_ta_tien_nghi_khac">
+            <input type="text" class="form-control" id="mo_ta_tien_nghi_khac" name="mo_ta_tien_nghi_khac"  required
+                   value="${facility.description}">
         </div>
         <div class="col-md-12 " id="s3" style="display: none">
             <label for="dien_tich_ho_boi" class="form-label">Diện tích hồ bơi  </label>
-            <input type="number" class="form-control" id="dien_tich_ho_boi" name="dien_tich_ho_boi">
+            <input type="number" class="form-control" id="dien_tich_ho_boi" name="dien_tich_ho_boi"required
+                   value="${facility.poolArea}">
         </div>
         <div class="col-md-12" id="s4" style="display: none">
             <label for="so_tang" class="form-label">Số tầng </label>
-            <input type="number" class="form-control" id="so_tang" name="so_tang">
+            <input type="number" class="form-control" id="so_tang" name="so_tang"
+                   value="${facility.numberOfFloor}">
         </div>
         <div class="col-md-12 " id="s5" style="display: none">
             <label for="dich_vu_mien_phi_di_kem" class="form-label">Dịch vụ miễn phí: </label>
-            <input type="text" class="form-control" id="dich_vu_mien_phi_di_kem" name="dich_vu_mien_phi_di_kem">
+            <input type="text" class="form-control" id="dich_vu_mien_phi_di_kem" name="dich_vu_mien_phi_di_kem" required
+                   value="${facility.freeSerVice}">
         </div>
         <div class="col-12 ">
             <button type="submit" class="btn btn-primary">Thay đổi</button>

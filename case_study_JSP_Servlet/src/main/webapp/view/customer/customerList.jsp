@@ -11,6 +11,8 @@
 <head>
     <title>List Customer</title>
     <link rel="stylesheet" href="\bootstrap-5.0.2-dist\css\bootstrap.min.css">
+    <link rel="stylesheet" href="bootstrap520/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="datatables/css/dataTables.bootstrap5.min.css" />
     <style>
         #sticky {
             /*position: relative;*/
@@ -70,12 +72,31 @@
             <th class="text-center" colspan="2">Actions</th>
         </tr>
         <c:forEach var="customer" items="${listCustomer}">
-            <tr>
+            <tr style="text-align: center">
                 <td>${customer.customerId}</td>
-                <td>${customer.customerTypeId}</td>
+                <c:if test="${customer.customerTypeId == 1}">
+                    <td>Member</td>
+                </c:if>
+                <c:if test="${customer.customerTypeId == 2}">
+                    <td>Silver</td>
+                </c:if>
+                <c:if test="${customer.customerTypeId == 3}">
+                    <td>Gold</td>
+                </c:if>
+                <c:if test="${customer.customerTypeId == 4}">
+                    <td>Platinium</td>
+                </c:if>
+                <c:if test="${customer.customerTypeId == 5}">
+                    <td>Diamond</td>
+                </c:if>
                 <td>${customer.customerName}</td>
                 <td>${customer.customerBirth}</td>
-                <td>${customer.customerGender}</td>
+                <c:if test="${customer.customerGender == true}" >
+                    <td>Nam</td>
+                </c:if>
+                <c:if test="${customer.customerGender == false}"  >
+                    <td>Nữ</td>
+                </c:if>
                 <td>${customer.customerIdCard}</td>
                 <td>${customer.customerPhone}</td>
                 <td>${customer.customerEmail}</td>
