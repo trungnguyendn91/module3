@@ -58,6 +58,7 @@
                 <th>Ngày Sinh:</th>
                 <td>
                     <input required type="date" name="ngay_sinh" size="15" value="${customer.customerBirth}"/>
+                    <div style="color: red">${birthdayErr}</div>
                 </td>
             </tr>
             <tr>
@@ -73,18 +74,21 @@
             <th>CMND/CCCD:</th>
                 <td>
                     <input required type="number" name="so_cmnd" size="25" value="${customer.customerIdCard}"/>
+
                 </td>
             </tr>
             <tr>
                 <th>Số Điện Thoại:</th>
                 <td>
                 <input required type="number" name="so_dien_thoai" size="25" value="${customer.customerPhone}"/>
+                    <div style="color: red">${phoneErr}</div>
                 </td>
             </tr>
             <tr>
                 <th>Email:</th>
                 <td>
                     <input required type="text" name="email" size="15" value="${customer.customerEmail}"/>
+                    <div style="color: red">${emailErr}</div>
                 </td>
             </tr>
             <tr>

@@ -18,6 +18,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.List;
+import java.util.Map;
 
 @WebServlet(name = "FacilityServlet", urlPatterns ="/facility")
 public class FacilityServlet extends HttpServlet {
@@ -125,15 +126,27 @@ public class FacilityServlet extends HttpServlet {
         String freeSerVice = request.getParameter("dich_vu_mien_phi_di_kem");
         Facility facility = new Facility(facilityName,facilityArea,facilityCost,facilityMaxPeople,
                 rentTypeId,facilityTypeId,standardRoom,description,poolArea,numberOfFloor,freeSerVice);
-        boolean check = facilityService.addFacility(facility);
-        if (check){
-            request.setAttribute("mess", "Them moi thanh cong");
-        }else {
-            request.setAttribute("mess", "Them moi thất bại");
-        }
-        showNewListFacility(request,response);
 
+
+        Map<String,String> errMap = this.facilityService.add(facility);
+        request.setAttribute("facility",facility);
+
+        if (errMap.isEmpty()){
+            response.sendRedirect("/facility");
+        }else {
+            for (Map.Entry<String,String> entry: errMap.entrySet()){
+                request.setAttribute(entry.getKey(),entry.getValue());
+            }
+            try {
+                request.getRequestDispatcher("view/service/newService.jsp").forward(request,response);
+            } catch (ServletException e) {
+                e.printStackTrace();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
     }
+
 
 
 

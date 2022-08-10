@@ -36,19 +36,23 @@
     <form class="row g-3" action="" method="post">
         <div class="col-md-12">
             <label for="ten_dich_vu" class="form-label">Tên dịch vụ:</label>
-            <input type="text" class="form-control" id="ten_dich_vu"  name="ten_dich_vu" >
+            <input type="text" class="form-control" id="ten_dich_vu"  name="ten_dich_vu" value="${facility.facilityArea}"/>
+            <div style="color: red">${nameErr}</div>
         </div>
         <div class="col-md-12">
             <label for="dien_tich" class="form-label">Diện tích sử dụng (m<sup>2</sup>:</label>
-            <input type="text" class="form-control" id="dien_tich" name="dien_tich">
+            <input type="text" class="form-control" id="dien_tich" name="dien_tich" value="${facility.facilityName}"/>
+            <div style="color: red">${areaErr}</div>
         </div>
         <div class="col-md-12">
             <label for="gia_thue" class="form-label">Giá thuê:</label>
-            <input type="number" class="form-control" id="gia_thue" name="gia_thue">
+            <input type="number" class="form-control" id="gia_thue" name="gia_thue" value="${facility.facilityCost}"/>
+            <div style="color: red">${costErr}</div>
         </div>
         <div class="col-md-12">
             <label for="so_nguoi_toi_da" class="form-label">Số người:</label>
-            <input type="number" class="form-control" id="so_nguoi_toi_da" name="so_nguoi_toi_da">
+            <input type="number" class="form-control" id="so_nguoi_toi_da" name="so_nguoi_toi_da" value="${facility.facilityMaxPeople}"/>
+            <div style="color: red">${maxPeopleErr}</div>
         </div>
         <div class="col-md-12">
             <label for="ma_kieu_thue" class="form-label">Kiểu thuê:</label>
@@ -70,23 +74,25 @@
         </div>
         <div class="col-md-12 " id="s1" style="display: none">
             <label for="tieu_chuan_phong" class="form-label">Tiêu chuẩn phòng </label>
-            <input type="text" class="form-control" id="tieu_chuan_phong" name="tieu_chuan_phong">
+            <input type="text" class="form-control" id="tieu_chuan_phong" name="tieu_chuan_phong" value="${facility.standardRoom}"/>
         </div>
         <div class="col-md-12 " id="s2" style="display: none">
             <label for="mo_ta_tien_nghi_khac" class="form-label">Tiện nghi khác</label>
-            <input type="text" class="form-control" id="mo_ta_tien_nghi_khac" name="mo_ta_tien_nghi_khac">
+            <input type="text" class="form-control" id="mo_ta_tien_nghi_khac" name="mo_ta_tien_nghi_khac" value="${facility.description}">
         </div>
         <div class="col-md-12 " id="s3" style="display: none">
             <label for="dien_tich_ho_boi" class="form-label">Diện tích hồ bơi  </label>
-            <input type="number" class="form-control" id="dien_tich_ho_boi" name="dien_tich_ho_boi">
+            <input type="number" class="form-control" id="dien_tich_ho_boi" name="dien_tich_ho_boi" value="${facility.poolArea}">
+            <div style="color: red">${poolErr}</div>
         </div>
         <div class="col-md-12" id="s4" style="display: none">
             <label for="so_tang" class="form-label">Số tầng </label>
-            <input type="number" class="form-control" id="so_tang" name="so_tang">
+            <input type="number" class="form-control" id="so_tang" name="so_tang" value="${facility.numberOfFloor}">
+            <div style="color: red">${floorErr}</div>
         </div>
         <div class="col-md-12 " id="s5" style="display: none">
             <label for="dich_vu_mien_phi_di_kem" class="form-label">Dịch vụ miễn phí: </label>
-            <input type="text" class="form-control" id="dich_vu_mien_phi_di_kem" name="dich_vu_mien_phi_di_kem">
+            <input type="text" class="form-control" id="dich_vu_mien_phi_di_kem" name="dich_vu_mien_phi_di_kem" value="${facility.freeSerVice}">
         </div>
         <div class="col-12 ">
             <button type="submit" class="btn btn-primary">Lưu</button>

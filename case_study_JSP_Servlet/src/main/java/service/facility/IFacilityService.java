@@ -7,6 +7,7 @@ import model.facility.Facility;
 
 import java.sql.SQLException;
 import java.util.List;
+import java.util.Map;
 
 public interface IFacilityService {
     public boolean addFacility(Facility facility);
@@ -24,5 +25,8 @@ public interface IFacilityService {
     List<ServiceType> getServiceTypeList();
 
     List<RentType> getRentTypeList();
+
+    Map<String, String> add(Facility facility);
+
 
 }

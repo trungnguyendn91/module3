@@ -74,7 +74,7 @@ public class CustomerService implements ICustomerService {
         }
 
         if (!customer.getCustomerPhone().isEmpty()){
-            if (!customer.getCustomerPhone().matches("^((090)|(091)|(\\(84\\)+90)|(\\(84\\)+91))[0-9]{7}$")){
+            if (!customer.getCustomerPhone().matches("^(\\+84|0)\\d{9}$")){
                 errMap.put("phoneErr","Please input right format!");
             }
         }else {
@@ -82,7 +82,7 @@ public class CustomerService implements ICustomerService {
         }
 
         if (!customer.getCustomerEmail().isEmpty()){
-            if (!customer.getCustomerEmail().matches("^[a-z0-9]+@[a-z0-9]+\\.[a-z]+$")){
+            if (!customer.getCustomerEmail().matches("^[a-zA-Z][a-zA-Z0-9]+@[a-z0-9]+\\.[a-z]+$")){
                 errMap.put("emailErr","Please input right format!");
             }
         }else {
@@ -90,7 +90,7 @@ public class CustomerService implements ICustomerService {
         }
 
         if ((!customer.getCustomerBirth().isEmpty())){
-            if ((customer.getCustomerBirth()).matches("^[0-9]{2}/[0-9]{2}/[0-9]{4}$")){
+            if ((customer.getCustomerBirth()).matches("^([0-2][0-9]|3[0|1])\\/(0[1-9]|1[0-2])\\/\\d{4}$")){
                 errMap.put("birthdayErr","Please input right format!");
             }
         }else {

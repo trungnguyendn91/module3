@@ -10,6 +10,7 @@ import repository.facility_repository.IFacilityRepository;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 public class FacilityRepositoryService implements IFacilityRepository {
     private static final String SELECT_ALL_FACILITY = "select * from dich_vu where `status` = 1";
@@ -259,6 +260,50 @@ public class FacilityRepositoryService implements IFacilityRepository {
         }
         return rentalTypeList;
     }
+
+    @Override
+    public void addNewFacility(Facility facility) {
+        Connection connection = BaseRepository.getConnectDB();
+        try {
+            String freeService = facility.getFreeSerVice();
+            double poolArea = facility.getPoolArea();
+            String standardRoom = facility.getStandardRoom();
+            String description = facility.getDescription();
+            int numberOfFloors = facility.getNumberOfFloor();
+            if (facility.getFacilityTypeId() == 1) {
+                facility = null;
+            } else if (facility.getFacilityTypeId() == 2) {
+                freeService = null;
+                poolArea = 0;
+            } else {
+                poolArea = 0;
+                standardRoom = null;
+                description = null;
+                numberOfFloors = 0;
+            }
+            try {
+                PreparedStatement preparedStatement = connection.prepareStatement(INSERT_INTO);
+                preparedStatement.setString(1, facility.getFacilityName());//ten_dich_vu
+                preparedStatement.setInt(2, facility.getFacilityArea());//dien_tich
+                preparedStatement.setDouble(3, facility.getFacilityCost());//gia_thue
+                preparedStatement.setInt(4, facility.getFacilityMaxPeople());//so_nguoi_toi_da
+                preparedStatement.setInt(5, facility.getRentTypeId());//ma_kieu_thue
+                preparedStatement.setInt(6, facility.getFacilityTypeId());//ma_loai_dich_vu
+                preparedStatement.setString(7, facility.getStandardRoom());//tieu_chuan_phong
+                preparedStatement.setString(8, facility.getDescription());//mo_ta_tien_nghi_khac
+                preparedStatement.setDouble(9, facility.getPoolArea());//dien_tich_ho_boi
+                preparedStatement.setInt(10, facility.getNumberOfFloor());//so_tang
+                preparedStatement.setString(11, facility.getFreeSerVice());//dich_vu_mien_phi_di_kem
+                preparedStatement.executeLargeUpdate();
+            } catch (SQLException throwables) {
+                throwables.printStackTrace();
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+
 
 
     private void printSQLException(SQLException ex) {

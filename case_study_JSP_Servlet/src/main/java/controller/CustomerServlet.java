@@ -69,7 +69,6 @@ public class CustomerServlet extends HttpServlet {
         String customerPhone = request.getParameter("so_dien_thoai");
         String customerEmail = request.getParameter("email");
         String customerAddress = request.getParameter("dia_chi");
-
         Customer customer = new Customer(customerTypeId, customerName, customerBirth, customerGender,
                 customerIdCard, customerPhone, customerEmail, customerAddress);
 
@@ -92,6 +91,8 @@ public class CustomerServlet extends HttpServlet {
             }
         }
     }
+
+
     private void showHomePage(HttpServletRequest request, HttpServletResponse response) {
         List<Customer> customerList = customerService.selectAllCustomer();
         List<CustomerType> customerTypeList = customerService.showCustomerType();
